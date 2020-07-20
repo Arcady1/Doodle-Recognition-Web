@@ -16,16 +16,55 @@ html {
 }
 
 .index-container {
-    max-width: $maxWidth;
+    width: $maxWidth;
     height: 100vh;
 
     .index-content {
+        display: flex;
         width: 100%;
         height: 100%;
-        
+        background: url('../img/content/bg-doodle.jpg') 0 0/50% auto;
+        background-color: rgba(255, 164, 0, .8);
+        background-blend-mode: multiply;
+
+        // навигационная панель
+        .content__info {
+            width: $content__infoArea;
+            height: 100%;
+            background-color: orange;
+
+            .content__buttons_nav {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+
+                .content__button {
+                    display: block;
+                    width: 60%;
+                    background-color: #333;
+                    border-radius: .2rem;
+
+                    font-size: 1.8rem;
+                    color: #fff;
+                }
+
+                .content__button_pad {
+                    padding: 5px 15px;
+                }
+
+                .content__button_mar {
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+
+        // холст
         .content__drowing {
-            width: 100%;
-            height: 100vh - $content__infoArea;
+            width: 100vw - $content__infoArea;
+            height: 100%;
             background-color: #fff;
 
             .content__canvas {
@@ -34,26 +73,6 @@ html {
 
             .content__canvas:hover {
                 cursor: crosshair;
-            }
-        }
-
-        .content__info {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: $content__infoArea;
-            background-color: orange;
-
-            .content__clear-button {
-                display: block;
-                width: 200px;
-                height: 100px;
-                background-color: #333;
-                border-radius: 20px;
-
-                font-size: 2rem;
-                color: #fff;
             }
         }
     }
