@@ -103,12 +103,9 @@ html {
   width: 100%;
   height: 80vh;
   background-color: #fff;
-  overflow: hidden;
 }
 .index-container .index-content .content__drowing .content__canvas {
   display: block;
-  margin: 0 auto;
-  outline: 3px solid #333;
 }
 .index-container .index-content .content__drowing .content__canvas:hover {
   cursor: crosshair;
