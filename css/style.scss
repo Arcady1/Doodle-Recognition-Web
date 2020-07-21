@@ -44,7 +44,7 @@ html {
         // Barplot
         .content__barplot {
             flex-grow: 1;
-            min-width: 60px; //!
+            min-width: 60px; // !
             max-width: 150px; // !
             height: 100px;
 
@@ -61,6 +61,6 @@ html {
     }
 
     .index-content_pading {
-        padding: $infoNavPad * 2 0;
+        padding: 2 * $infoNavPad 0;
     }
 }

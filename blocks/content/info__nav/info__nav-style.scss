@@ -100,10 +100,11 @@
         }
 
         .line-weight_hover {
-            width: $lineWidth;
+            width: $lineWeightSize;
             bottom: 0;
             left: calc(100% + 14px);
             background-color: #fff;
+            z-index: 1;
             padding: 20px;
 
             @extend %nav__item_borders;

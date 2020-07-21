@@ -42,8 +42,8 @@ $eraserButton.click(() => {
 // очистка холста
 $clearButton.click(() => {
     eraser = false;
-    ctx.clearRect(0, 0, $canvas.width(), $canvas.height());
     activeButton(0);
+    smoothCanvasClean();
 });
 
 // * PEN WEIGHT
@@ -120,4 +120,23 @@ function activeButton(num) {
         else
             $(this).removeClass("active-button");
     });
+}
+// плавная очистка canvas
+function smoothCanvasClean() {
+    let $canasVeil = $(".canas-veil"); // пелена для плавной очистки canvas
+    let $canasVeilDuration = parseFloat($canasVeil.css("transition-duration")) * 1000;
+
+    $canasVeil.css({
+        "visibility": "visible",
+        "opacity": 1
+    });
+
+    // очистка canvas и скрытие пелены через N мсек, для плавности
+    setTimeout(() => {
+        ctx.clearRect(0, 0, $canvas.width(), $canvas.height());
+        $canasVeil.css({
+            "visibility": "hidden",
+            "opacity": 0
+        });
+    }, $canasVeilDuration)
 }
