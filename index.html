@@ -10,23 +10,36 @@
 
 <body>
     <div class="index-container">
-        <div class="header">
-            <div class="header__inner">
-                <!-- импорт навигации -->
-            </div>
+        <div class="index-content index-content_padding">
+            <div class="content__info">
+<div class="info__nav info__nav_padding">
+    <button class="nav__button pen-button" id="pen-button"></button>
+    <button class="nav__button eraser-button" id="eraser-button"></button>
+    <button class="nav__button clear-button" id="clear-button"></button>
+    <button class="nav__button line-width">
+        <div class="line-width__item"></div>
+        <div class="line-width__item"></div>
+        <div class="line-width__item"></div>
+        <div class="line-width__item"></div>
+        <div class="arrow"></div>
+        <div class="line-weight_hover">
+            <div class="line-weight_hover__item"></div>
+            <div class="line-weight_hover__item"></div>
+            <div class="line-weight_hover__item"></div>
+            <div class="line-weight_hover__item"></div>
         </div>
-        <div class="index-content">
-            <div class="content__drowing">
+    </button>
+</div>            </div>
+            <div class="content__drowing content__drowing_padding" id="content__drowing">
+                <canvas class="content__canvas" id="content__canvas" resize="true" width="300" height="150"></canvas>
+            </div>
+            <div class="content__barplot">
 
             </div>
-            <div class="content__info">
-                
-            </div>
-        </div>
-        <div class="footer">
-            <!-- импорт footer'а -->
         </div>
     </div>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>
