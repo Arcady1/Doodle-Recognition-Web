@@ -33,19 +33,30 @@ html {
             @import '../blocks/blocks/content/info__nav/info__nav-style';
         }
 
-        // холст
+        // canvas
         .content__drowing {
             width: 100vw - $content__infoArea;
             height: 80%;
-            background-color: #fff;
 
-            .content__canvas {
-                display: block;
-                outline: 1px solid #000;
+            .canvas__wrapper {
+                cursor: none;
+
+                .content__canvas {
+                    display: block;
+                    outline: 1px solid #000;
+                }
             }
 
-            .content__canvas:hover {
-                cursor: crosshair;
+            .canvas-mouse {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 6px + 2px;
+                height: 6px + 2px;
+                z-index: -1;
+                border: 2px solid #000;
+                border-radius: 50%;
             }
         }
 

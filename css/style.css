@@ -222,14 +222,24 @@ html {
 .index-container .index-content .content__drowing {
   width: 90vw;
   height: 80%;
-  background-color: #fff;
 }
-.index-container .index-content .content__drowing .content__canvas {
+.index-container .index-content .content__drowing .canvas__wrapper {
+  cursor: none;
+}
+.index-container .index-content .content__drowing .canvas__wrapper .content__canvas {
   display: block;
   outline: 1px solid #000;
 }
-.index-container .index-content .content__drowing .content__canvas:hover {
-  cursor: crosshair;
+.index-container .index-content .content__drowing .canvas-mouse {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  z-index: -1;
+  border: 2px solid #000;
+  border-radius: 50%;
 }
 .index-container .index-content .content__drowing_padding {
   padding: 0 3vw;
