@@ -1,0 +1,23 @@
+.content__drowing {
+    width: 100vw - $content__infoArea; // ?
+    height: 80%;
+
+    .canvas__wrapper {
+        cursor: none;
+
+        .content__canvas {
+            display: block;
+            box-shadow: $canvasShadow;
+        }
+    }
+
+    .canvas-mouse {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        border: 1.4px solid #000;
+        border-radius: 50%;
+    }
+}

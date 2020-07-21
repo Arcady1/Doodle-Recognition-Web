@@ -27,49 +27,17 @@ html {
 
         // навигационная панель
         .content__info {
-            @extend %nav__item_borders;
-
-            @import '../blocks/blocks/content/info__nav/info__nav-style';
+            @import '../blocks/content/info__nav/info__nav-style';
         }
 
         // canvas
-        .content__drowing {
-            width: 100vw - $content__infoArea;
-            height: 80%;
+        @import '../blocks/content/content__drowing/content__drowing-style.scss';
 
-            .canvas__wrapper {
-                cursor: none;
-
-                .content__canvas {
-                    display: block;
-                    box-shadow: $canvasShadow;
-                }
-            }
-
-            .canvas-mouse {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                z-index: -1;
-                border: 1.4px solid #000;
-                border-radius: 50%;
-            }
-        }
-
-        .content__drowing_padding {
-            padding: 0 3vw;
-        }
-
-        // Barplot
-        .content__barplot {
-            width: 100px;
-            height: 100px;
-            background-color: #000;
-        }
-    }
-
-    .index-content_padding {
-        padding: 0 20px;
+        // ! Barplot
+        // .content__barplot {
+        //     width: 100px;
+        //     height: 100px;
+        //     background-color: #000;
+        // }
     }
 }

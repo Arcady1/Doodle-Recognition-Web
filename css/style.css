@@ -72,11 +72,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*--------------------*/
-.index-container .index-content .content__info .info__nav .line-width .line-weight_hover, .index-container .index-content .content__info .info__nav .nav__button, .index-container .index-content .content__info {
+.index-container .index-content .content__info .info__nav .line-width .line-weight_hover, .index-container .index-content .content__info .info__nav .nav__button:last-child:active, .index-container .index-content .content__info .info__nav .nav__button {
   border: 2px solid #000;
   border-radius: 20px;
-  border-right: 7px solid #000;
-  border-bottom: 7px solid #000;
+  box-shadow: 3px 3px 0 3px #000;
+}
+
+.index-container .index-content .content__info .info__nav .nav__button:active {
+  transition: 0.15s;
+  top: 3px;
+  left: 3px;
+  box-shadow: 1px 1px 0 1px #000;
 }
 
 @media (max-width: 425px) {
@@ -120,12 +126,19 @@ html {
   height: 100px;
   background-color: #fff;
   transition: 0.25s;
+  position: relative;
+  top: 0;
+  left: 0;
   background-size: 80%;
   background-repeat: no-repeat;
   background-position: center;
 }
 .index-container .index-content .content__info .info__nav .nav__button:hover {
   background-color: orange;
+}
+.index-container .index-content .content__info .info__nav .nav__button:last-child:active {
+  top: 0;
+  left: 0;
 }
 .index-container .index-content .content__info .info__nav .pen-button {
   background-image: url("../img/nav/pen.png");
@@ -223,6 +236,7 @@ html {
 }
 .index-container .index-content .content__info .info__nav_padding {
   padding: 20px;
+  padding-right: 25px;
 }
 .index-container .index-content .content__drowing {
   width: 90vw;
@@ -243,15 +257,4 @@ html {
   z-index: -1;
   border: 1.4px solid #000;
   border-radius: 50%;
-}
-.index-container .index-content .content__drowing_padding {
-  padding: 0 3vw;
-}
-.index-container .index-content .content__barplot {
-  width: 100px;
-  height: 100px;
-  background-color: #000;
-}
-.index-container .index-content_padding {
-  padding: 0 20px;
 }

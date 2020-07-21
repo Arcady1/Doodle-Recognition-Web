@@ -67,6 +67,7 @@ lineWeights[3].onmousedown = () => {
 // * MY FUNCTIONS
 // исходные настройки canvas
 function defaultSet() {
+    activeButton(0);
     ctx.lineWidth = 6;
     cursorResize(ctx.lineWidth);
 }

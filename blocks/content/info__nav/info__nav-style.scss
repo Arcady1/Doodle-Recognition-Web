@@ -10,6 +10,9 @@
         height: $navButtonSize;
         background-color: #fff;
         transition: .25s;
+        position: relative;
+        top: 0;
+        left: 0;
         @extend %nav__item_borders;
 
         background-size: $navImgSize;
@@ -19,6 +22,16 @@
 
     .nav__button:hover {
         background-color: orange;
+    }
+
+    .nav__button:active {
+        @extend %nav__item-active;
+    }
+
+    .nav__button:last-child:active {
+        @extend %nav__item_borders;
+        top: 0;
+        left: 0;
     }
 
     .pen-button {
@@ -146,4 +159,5 @@
 
 .info__nav_padding {
     padding: $infoNavPad;
+    padding-right: $infoNavPad + $navButtonBorder + $navButtonBoxShadow;
 }
