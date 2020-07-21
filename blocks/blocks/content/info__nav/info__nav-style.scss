@@ -1,0 +1,75 @@
+.info__nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .nav__button {
+        display: block;
+        width: $navButtonSize;
+        height: $navButtonSize;
+        border: 2px solid #000;
+        border-radius: $navButtonRadius;
+        background-color: #fff;
+
+        background-size: $navImgSize;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .pen-button {
+        background-image: url('../img/nav/pen.png');
+    }
+
+    .eraser-button {
+        background-image: url('../img/nav/eraser.png');
+    }
+
+    .clear-button {
+        background-image: url('../img/nav/trash.png');
+    }
+
+    .line-width {
+        width: 100%;
+        height: 100%;
+        padding: 20%;
+
+        .line-width__item {
+            width: 100%;
+            background-color: #000;
+            margin-bottom: $lineWidthMargin;
+        }
+
+        .line-width__item:first-child {
+            height: 5px;
+        }
+
+        .line-width__item:nth-child(2) {
+            height: 8px;
+        }
+
+        .line-width__item:nth-child(3) {
+            height: 11px;
+        }
+
+        .line-width__item:nth-child(4) {
+            height: 14px;
+        }
+
+        .line-width__item:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.info__nav button:nth-child(n) {
+    margin-bottom: $navButtonMargin;
+}
+
+.info__nav button:last-child {
+    margin-bottom: 0;
+}
+
+.info__nav_padding {
+    padding: $infoNavPad;
+}

@@ -52,5 +52,5 @@ function stopWriting() {
 // ф-ия изменяет размер canvas при изменении размера окна браузера
 function canvasResize() {
     canvas.width = $content__drowing.width();
-    canvas.height = window.innerHeight;
+    canvas.height = $content__drowing.height();
 }
