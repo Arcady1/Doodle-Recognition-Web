@@ -63,6 +63,7 @@ lineWeights[3].onmousedown = () => {
 // исходные настройки canvas
 function defaultSet() {
     ctx.lineWidth = 6;
+    cursorResize(ctx.lineWidth);
 }
 // ф-ия рисования линий
 function writing() {
