@@ -9,11 +9,16 @@
         width: $navButtonSize;
         height: $navButtonSize;
         background-color: #fff;
+        transition: .25s;
         @extend %nav__item_borders;
 
         background-size: $navImgSize;
         background-repeat: no-repeat;
         background-position: center;
+    }
+
+    .nav__button:hover {
+        background-color: orange;
     }
 
     .pen-button {
@@ -26,6 +31,10 @@
 
     .clear-button {
         background-image: url('../img/nav/trash.png');
+    }
+
+    .active-button {
+        background-color: orange;
     }
 
     .line-width {

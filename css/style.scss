@@ -27,8 +27,7 @@ html {
 
         // навигационная панель
         .content__info {
-            border: 2px solid #000;
-            border-radius: $navButtonRadius;
+            @extend %nav__item_borders;
 
             @import '../blocks/blocks/content/info__nav/info__nav-style';
         }
@@ -43,7 +42,7 @@ html {
 
                 .content__canvas {
                     display: block;
-                    outline: 1px solid #000;
+                    box-shadow: $canvasShadow;
                 }
             }
 
@@ -53,7 +52,7 @@ html {
                 top: 0;
                 left: 0;
                 z-index: -1;
-                border: 2px solid #000;
+                border: 1.4px solid #000;
                 border-radius: 50%;
             }
         }

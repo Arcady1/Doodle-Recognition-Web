@@ -1,13 +1,14 @@
 let $penButton = $("#pen-button"); // ручка
 let $eraserButton = $("#eraser-button"); // ластик
 let $clearButton = $("#clear-button"); // кнопка очистки
+let $navButtons = $(".nav__button"); // массив кнопок
 let $content__drowing = $('#content__drowing'); // обертка холста
 let $canvas = $('#content__canvas'); // canvas
 let $canvasWrapper = $('#canvas__wrapper'); // обертка canvas для мыши
 let ctx = $canvas[0].getContext("2d"); // контекст canvas
 let eraser = false; // ластик выключен
-let lineWeights = document.getElementsByClassName('line-weight_hover__item'); // ширина кистей
-let $newMouse = $('#canvas-mouse'); // новый курсор
+let lineWeights = document.getElementsByClassName("line-weight_hover__item"); // ширина кистей
+let $newMouse = $("#canvas-mouse"); // новый курсор
 
 // Canvas settings 
 // Resizing
@@ -28,17 +29,21 @@ $canvas.mousedown(function () {
 });
 
 // * PAINT MENU
-// очистка холста
-$clearButton.click(() => {
-    ctx.clearRect(0, 0, $canvas.width(), $canvas.height());
+// выбрано перо
+$penButton.click(() => {
+    eraser = false;
+    activeButton(0);
 });
 // выбран ластик
 $eraserButton.click(() => {
     eraser = true;
+    activeButton(1);
 });
-// выбрано перо
-$penButton.click(() => {
+// очистка холста
+$clearButton.click(() => {
     eraser = false;
+    ctx.clearRect(0, 0, $canvas.width(), $canvas.height());
+    activeButton(0);
 });
 
 // * PEN WEIGHT
@@ -104,5 +109,14 @@ function cursorResize(num) {
     $newMouse.css({
         "width": size,
         "height": size
+    });
+}
+// ф-ия устанавливает активную кнопку
+function activeButton(num) {
+    $navButtons.each(function (index) {
+        if (index == num)
+            $(this).addClass("active-button");
+        else
+            $(this).removeClass("active-button");
     });
 }
