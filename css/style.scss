@@ -19,11 +19,19 @@ html {
     width: $maxWidth;
     height: 100vh;
 
+    .header {
+        width: 100%;
+        height: 10%;
+        // header__inner
+        @import '../blocks/header/header__inner-style';
+    }
+
     .index-content {
         display: flex;
+        justify-content: center;
         align-items: center;
         width: 100%;
-        height: 100%;
+        height: 90%;
 
         // навигационная панель
         .content__info {

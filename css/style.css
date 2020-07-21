@@ -1,5 +1,6 @@
 @charset "UTF-8";
 /*Обнуление*/
+@import url("https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -108,11 +109,33 @@ html {
   width: 100vw;
   height: 100vh;
 }
-.index-container .index-content {
-  display: flex;
-  align-items: center;
+.index-container .header {
+  width: 100%;
+  height: 10%;
+}
+.index-container .header .header__inner {
   width: 100%;
   height: 100%;
+}
+.index-container .header .header__inner .title {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  font-family: "Sedgwick Ave", cursive;
+  text-transform: uppercase;
+}
+.index-container .header .header__inner .title_padding {
+  padding-top: 2rem;
+}
+.index-container .index-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90%;
 }
 .index-container .index-content .content__info .info__nav {
   display: flex;
