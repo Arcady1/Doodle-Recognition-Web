@@ -5,11 +5,15 @@ let $content__drowing = $('#content__drowing'); // обертка холста
 let canvas = document.getElementById('content__canvas'); // canvas
 let ctx = canvas.getContext('2d'); // контекст canvas
 let eraser = false; // ластик выключен
+let lineWeights = document.getElementsByClassName('line-weight_hover__item'); // ширина кистей
 
-// Canvas resizing
+// Canvas settings 
+// Resizing
 canvasResize();
 $(window).resize(canvasResize);
-
+// Default settings
+ctx.lineWidth = 6;
+// Canvas writing
 canvas.onmousedown = function () {
     if (eraser == true)
         ctx.strokeStyle = "#fff";
@@ -35,10 +39,23 @@ $penButton.click(() => {
     eraser = false;
 });
 
+// * PEN WEIGHT
+lineWeights[0].onmousedown = () => {
+    ctx.lineWidth = 6;
+}
+lineWeights[1].onmousedown = () => {
+    ctx.lineWidth = 8;
+}
+lineWeights[2].onmousedown = () => {
+    ctx.lineWidth = 10;
+}
+lineWeights[3].onmousedown = () => {
+    ctx.lineWidth = 14;
+}
+
 // * MY FUNCTIONS
 // ф-ия рисования линий
 function writing() {
-    ctx.lineWidth = 6;
     ctx.lineCap = "round";
     ctx.lineTo(event.offsetX, event.offsetY);
     ctx.stroke();
