@@ -6,14 +6,10 @@
 // Predict const prediction = model.predict(img); [1, 340] // flatten
 // const index = numpyjs.argmax(prediction)[1]
 // conds class_name = name_list[index]
-const {
-    base64encode,
-    base64decode
-} = require('../node_modules/nodejs-base64');
 
 function getImage() {
-    let canvas = document.getElementById('content__canvas');
-    let imgDec = base64decode(canvas.toDataURL('image/jpeg'));
-    
-    console.log(imgDec);
+    let canvas = document.getElementById('content__canvas'); // canvas
+    let dData = canvas.toDataURL('image/png'); // получаем base64 формат
+    let cData = dData.replace("data:image/png;base64,", " "); // чистый base64
+    console.log(cData);
 }
