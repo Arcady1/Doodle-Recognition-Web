@@ -1,0 +1,21 @@
+{
+  "name": "doodle-recognition",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js/index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "start": "node js/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arcady1/Doodle-Recognition-Web.git"
+  },
+  "author": "Arkady Gusarov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Arcady1/Doodle-Recognition-Web/issues"
+  },
+  "homepage": "https://github.com/Arcady1/Doodle-Recognition-Web#readme"
+}
