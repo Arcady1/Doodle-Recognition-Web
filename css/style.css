@@ -313,20 +313,6 @@ html {
   transition-timing-function: ease;
   transition-delay: 0;
 }
-.index-container .index-content .content__barplot {
-  flex-grow: 1;
-  min-width: 300px;
-  max-width: 400px;
-  height: 600px;
-}
-.index-container .index-content .content__barplot .barplot__inner {
-  width: 100%;
-  height: 100%;
-  outline: 1px solid #000;
-}
-.index-container .index-content .content__barplot_padding {
-  padding: 20px;
-}
 .index-container .index-content_pading {
   padding-bottom: 40px;
 }

@@ -40,24 +40,6 @@ html {
 
         // canvas
         @import '../blocks/content/content__drowing/content__drowing-style.scss';
-
-        // barplot
-        .content__barplot {
-            flex-grow: 1;
-            min-width: 300px; // !
-            max-width: 400px; // !
-            height: 600px;
-
-            .barplot__inner {
-                width: 100%;
-                height: 100%;
-                outline: 1px solid #000;
-            }
-        }
-
-        .content__barplot_padding {
-            padding: $infoNavPad;
-        }
     }
 
     .index-content_pading {
