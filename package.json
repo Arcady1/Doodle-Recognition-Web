@@ -2,9 +2,9 @@
   "name": "doodle-recognition",
   "version": "1.0.0",
   "description": "",
-  "main": "js/index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node static-file-server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -13,6 +13,7 @@
   "author": "Arkady Gusarov",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "js-base64": "^3.2.4"
   }
 }

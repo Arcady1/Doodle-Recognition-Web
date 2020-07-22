@@ -9,6 +9,8 @@ let ctx = $canvas[0].getContext("2d"); // контекст canvas
 let eraser = false; // ластик выключен
 let lineWeights = document.getElementsByClassName("line-weight_hover__item"); // ширина кистей
 let $newMouse = $("#canvas-mouse"); // новый курсор
+// !
+const xx = require('./index');
 
 // Canvas settings 
 // Resizing
@@ -25,8 +27,8 @@ $canvas.mousedown(function () {
 
     $canvas.mousemove(() => writing());
     $canvas.mouseup(() => {
-        getImage();
-        stopWriting()
+        xx.getImage();
+        stopWriting();
     });
     $canvas.mouseleave(() => stopWriting());
 });
