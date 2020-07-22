@@ -315,9 +315,9 @@ html {
 }
 .index-container .index-content .content__barplot {
   flex-grow: 1;
-  min-width: 150px;
-  max-width: 200px;
-  height: 100px;
+  min-width: 300px;
+  max-width: 400px;
+  height: 600px;
 }
 .index-container .index-content .content__barplot .barplot__inner {
   width: 100%;
