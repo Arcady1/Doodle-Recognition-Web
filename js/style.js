@@ -82,6 +82,7 @@ function writing() {
 function stopWriting() {
     ctx.beginPath();
     $canvas.off("mousemove");
+    getImage();
 }
 // ф-ия изменяет размер canvas при изменении размера окна браузера
 function canvasResize() {

@@ -6,7 +6,14 @@
 // Predict const prediction = model.predict(img); [1, 340] // flatten
 // const index = numpyjs.argmax(prediction)[1]
 // conds class_name = name_list[index]
-let canvas = document.getElementById('content__canvas');
-let img = new Image();
-img.src = canvas.toDataURL();
-console.log(img);
+const {
+    base64encode,
+    base64decode
+} = require('../node_modules/nodejs-base64');
+
+function getImage() {
+    let canvas = document.getElementById('content__canvas');
+    let imgDec = base64decode(canvas.toDataURL('image/jpeg'));
+    
+    console.log(imgDec);
+}
