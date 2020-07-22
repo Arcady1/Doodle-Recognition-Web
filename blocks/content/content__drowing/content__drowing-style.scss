@@ -1,7 +1,7 @@
 .content__drowing {
     flex-grow: 1;
-    min-width: 600px;
-    max-width: 1600px;
+    min-width: $minCanvWidth;
+    max-width: $maxCanvWidth;
     height: 100%;
     position: relative;
 

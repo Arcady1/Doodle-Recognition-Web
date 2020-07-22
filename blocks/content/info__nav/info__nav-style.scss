@@ -7,8 +7,12 @@
 
     .nav__button {
         display: block;
-        width: $navButtonSize;
-        height: $navButtonSize;
+        width: $NavButtonSize;
+        min-width: $minNavButtonSize;
+        max-width: $maxNavButtonSize;
+        height: $NavButtonSize;
+        min-height: $minNavButtonSize;
+        max-height: $maxNavButtonSize + $infoNavPad;
         background-color: #fff;
         transition: .25s;
         position: relative;
