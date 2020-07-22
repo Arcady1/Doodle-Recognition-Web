@@ -271,7 +271,7 @@ html {
 .index-container .index-content .content__drowing {
   flex-grow: 1;
   min-width: 305px;
-  max-width: 1600px;
+  max-width: 1300px;
   height: 100%;
   position: relative;
 }
@@ -292,7 +292,9 @@ html {
   top: 0;
   left: 0;
   z-index: -1;
-  border: 1.4px solid #000;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #000;
   border-radius: 50%;
 }
 .index-container .index-content .content__drowing .canas-veil {

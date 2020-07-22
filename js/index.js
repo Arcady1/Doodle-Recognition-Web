@@ -74,6 +74,7 @@ function defaultSet() {
 // ф-ия рисования линий
 function writing() {
     ctx.lineCap = "round";
+    console.log(event);
     ctx.lineTo(event.offsetX, event.offsetY);
     ctx.stroke();
     ctx.moveTo(event.offsetX, event.offsetY);
@@ -86,17 +87,17 @@ function stopWriting() {
 // ф-ия изменяет размер canvas при изменении размера окна браузера
 function canvasResize() {
     let canvas = document.getElementById('content__canvas');
+    console.log($content__drowing.css('width'));
     canvas.width = $content__drowing.width();
     canvas.height = $content__drowing.height();
 }
 // ф-ия меняет вид курсора
 $canvasWrapper.mousemove((event) => {
-    let cursorOffset = (ctx.lineWidth + 2) / 2;
-
+    let mouseWidtDiv2 = $newMouse.outerWidth() / 2;
     $newMouse.css('display', 'block');
     $newMouse.css({
-        "top": event.clientY - cursorOffset,
-        "left": event.clientX - cursorOffset
+        "top": event.clientY - mouseWidtDiv2,
+        "left": event.clientX - mouseWidtDiv2
     });
 });
 // удаление курсора-круга из canvas
@@ -105,7 +106,8 @@ $canvasWrapper.mouseleave(() => {
 });
 // новый размер курсора
 function cursorResize(num) {
-    let size = num + 2;
+    let mouseBorder = parseInt($newMouse.css('border-width'));
+    let size = num + mouseBorder;
 
     $newMouse.css({
         "width": size,

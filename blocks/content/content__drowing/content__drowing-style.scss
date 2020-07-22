@@ -24,7 +24,9 @@
         top: 0;
         left: 0;
         z-index: -1;
-        border: 1.4px solid #000;
+        border-width: $newMouseBorder;
+        border-style: solid;
+        border-color: #000;
         border-radius: 50%;
     }
 
