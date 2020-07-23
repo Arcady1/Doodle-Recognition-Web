@@ -4,7 +4,6 @@ let $clearButton = $("#clear-button"); // кнопка очистки
 let $navButtons = $(".nav__button"); // массив кнопок
 let $content__drowing = $('#content__drowing'); // обертка холста
 let $canvas = $('#content__canvas'); // canvas
-let canvas = document.getElementById('content__canvas'); // canvas
 let $canvasWrapper = $('#canvas__wrapper'); // обертка canvas для мыши
 let ctx = $canvas[0].getContext("2d"); // контекст canvas
 let eraser = false; // ластик выключен
@@ -28,7 +27,7 @@ $canvas.mousedown(function () {
 
     $canvas.mousemove(() => writing());
     $canvas.mouseup(() => {
-        mod.getImage(canvas);
+        mod.getImage(ctx);
         stopWriting();
     });
     $canvas.mouseleave(() => stopWriting());
@@ -91,6 +90,7 @@ function stopWriting() {
 }
 // ф-ия изменяет размер canvas при изменении размера окна браузера
 function canvasResize() {
+    let canvas = document.getElementById('content__canvas');
     canvas.width = $content__drowing.width();
     canvas.height = $content__drowing.height();
 }

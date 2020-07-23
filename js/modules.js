@@ -1,4 +1,3 @@
-// принимаю изображение с canvas
 // изменяю размер (64х64) // img = cv2.resize(img, (64, 64, 3))
 // делаю черно-белой (https://stackoverflow.com/questions/42099769/opencv-color-bgr2gray-error) //[64, 64, 3] -> [64, 64, 1]
 // img = numjs.expand_dims(img, axis = 0) // [64, 64, 1 ] -> [1, 64, 64, 1]
@@ -6,14 +5,11 @@
 // Predict const prediction = model.predict(img); [1, 340] // flatten
 // const index = numpyjs.argmax(prediction)[1]
 // conds class_name = name_list[index]
-// * browserify js/style.js js/modules.js -o js/bundle.js
 
-const Base64 = require('js-base64').Base64;
-
-function getImage(canvas) {
-    let dData = canvas.toDataURL('image/png'); // получаем base64 формат
-    let cData = dData.replace("data:image/png;base64,", " "); // чистый base64
-    console.log(Base64.atob(cData));
+// ф-ия для получения изображения с canvas
+function getImage(ctx) {
+    let imgData = ctx.getImageData(0, 0, 1300, 734);
+    // ctx.putImageData(imgData, 10, 10); // для проверки. Можно вывести на canvas нарисованное изображение (10, 10 - смещение по x и y)
 }
 
 module.exports = {

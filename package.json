@@ -4,7 +4,8 @@
   "description": "",
   "main": "js/server.js",
   "scripts": {
-    "start": "node js/server.js"
+    "start": "node js/server.js",
+    "build": "browserify js/style.js js/modules.js -o js/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -13,7 +14,6 @@
   "author": "Arkady Gusarov",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
-    "js-base64": "^3.2.4"
+    "express": "^4.17.1"
   }
 }
