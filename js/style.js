@@ -4,13 +4,14 @@ let $clearButton = $("#clear-button"); // кнопка очистки
 let $navButtons = $(".nav__button"); // массив кнопок
 let $content__drowing = $('#content__drowing'); // обертка холста
 let $canvas = $('#content__canvas'); // canvas
+let canvas = document.getElementById('content__canvas'); // canvas
 let $canvasWrapper = $('#canvas__wrapper'); // обертка canvas для мыши
 let ctx = $canvas[0].getContext("2d"); // контекст canvas
 let eraser = false; // ластик выключен
 let lineWeights = document.getElementsByClassName("line-weight_hover__item"); // ширина кистей
 let $newMouse = $("#canvas-mouse"); // новый курсор
-// !
-const xx = require('./index');
+
+const mod = require('./modules'); // модуль для npm пакетов
 
 // Canvas settings 
 // Resizing
@@ -27,7 +28,7 @@ $canvas.mousedown(function () {
 
     $canvas.mousemove(() => writing());
     $canvas.mouseup(() => {
-        xx.getImage();
+        mod.getImage(canvas);
         stopWriting();
     });
     $canvas.mouseleave(() => stopWriting());
@@ -90,7 +91,6 @@ function stopWriting() {
 }
 // ф-ия изменяет размер canvas при изменении размера окна браузера
 function canvasResize() {
-    let canvas = document.getElementById('content__canvas');
     canvas.width = $content__drowing.width();
     canvas.height = $content__drowing.height();
 }

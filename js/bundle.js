@@ -7,10 +7,11 @@
 // Predict const prediction = model.predict(img); [1, 340] // flatten
 // const index = numpyjs.argmax(prediction)[1]
 // conds class_name = name_list[index]
+// * browserify js/style.js js/modules.js -o js/bundle.js
+
 const Base64 = require('js-base64').Base64;
 
-function getImage() {
-    let canvas = document.getElementById('content__canvas'); // canvas
+function getImage(canvas) {
     let dData = canvas.toDataURL('image/png'); // получаем base64 формат
     let cData = dData.replace("data:image/png;base64,", " "); // чистый base64
     console.log(Base64.atob(cData));
@@ -20,7 +21,6 @@ module.exports = {
     "getImage": getImage
 }
 
-// ! browserify js/style.js js/index.js -o js/index-brow.js
 },{"js-base64":3}],2:[function(require,module,exports){
 let $penButton = $("#pen-button"); // ручка
 let $eraserButton = $("#eraser-button"); // ластик
@@ -28,13 +28,14 @@ let $clearButton = $("#clear-button"); // кнопка очистки
 let $navButtons = $(".nav__button"); // массив кнопок
 let $content__drowing = $('#content__drowing'); // обертка холста
 let $canvas = $('#content__canvas'); // canvas
+let canvas = document.getElementById('content__canvas'); // canvas
 let $canvasWrapper = $('#canvas__wrapper'); // обертка canvas для мыши
 let ctx = $canvas[0].getContext("2d"); // контекст canvas
 let eraser = false; // ластик выключен
 let lineWeights = document.getElementsByClassName("line-weight_hover__item"); // ширина кистей
 let $newMouse = $("#canvas-mouse"); // новый курсор
-// !
-const xx = require('./index');
+
+const mod = require('./modules'); // модуль для npm пакетов
 
 // Canvas settings 
 // Resizing
@@ -51,7 +52,7 @@ $canvas.mousedown(function () {
 
     $canvas.mousemove(() => writing());
     $canvas.mouseup(() => {
-        xx.getImage();
+        mod.getImage(canvas);
         stopWriting();
     });
     $canvas.mouseleave(() => stopWriting());
@@ -114,7 +115,6 @@ function stopWriting() {
 }
 // ф-ия изменяет размер canvas при изменении размера окна браузера
 function canvasResize() {
-    let canvas = document.getElementById('content__canvas');
     canvas.width = $content__drowing.width();
     canvas.height = $content__drowing.height();
 }
@@ -169,7 +169,7 @@ function smoothCanvasClean() {
         });
     }, $canasVeilDuration)
 }
-},{"./index":1}],3:[function(require,module,exports){
+},{"./modules":1}],3:[function(require,module,exports){
 (function (global){
 
 

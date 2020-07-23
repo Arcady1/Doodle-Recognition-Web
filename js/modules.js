@@ -6,10 +6,11 @@
 // Predict const prediction = model.predict(img); [1, 340] // flatten
 // const index = numpyjs.argmax(prediction)[1]
 // conds class_name = name_list[index]
+// * browserify js/style.js js/modules.js -o js/bundle.js
+
 const Base64 = require('js-base64').Base64;
 
-function getImage() {
-    let canvas = document.getElementById('content__canvas'); // canvas
+function getImage(canvas) {
     let dData = canvas.toDataURL('image/png'); // получаем base64 формат
     let cData = dData.replace("data:image/png;base64,", " "); // чистый base64
     console.log(Base64.atob(cData));
@@ -18,5 +19,3 @@ function getImage() {
 module.exports = {
     "getImage": getImage
 }
-
-// ! browserify js/style.js js/index.js -o js/index-brow.js
