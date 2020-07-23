@@ -10,7 +10,8 @@
 // ф-ия для получения изображения с canvas
 function getImage(ctx, w, h) {
     let imgData = ctx.getImageData(0, 0, w, h);
-    ctx.putImageData(imgData, 10, 10); // для проверки. Можно вывести на canvas нарисованное изображение (10, 10 - смещение по x и y)
+    console.log(imgData);
+    // ctx.putImageData(imgData, 10, 10); // для проверки. Можно вывести на canvas нарисованное изображение (10, 10 - смещение по x и y)
 }
 
 module.exports = {
@@ -45,10 +46,7 @@ $canvas.mousedown(function () {
         ctx.strokeStyle = "#000";
 
     $canvas.mousemove(() => writing());
-    $canvas.mouseup(() => {
-        mod.getImage(ctx, $canvas.width(), $canvas.height());
-        stopWriting();
-    });
+    $canvas.mouseup(() => stopWriting());
     $canvas.mouseleave(() => stopWriting());
 });
 
@@ -104,6 +102,7 @@ function writing() {
 }
 // остановка рисования
 function stopWriting() {
+    mod.getImage(ctx, $canvas.width(), $canvas.height());
     ctx.beginPath();
     $canvas.off("mousemove");
 }

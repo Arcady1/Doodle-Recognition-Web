@@ -9,6 +9,7 @@
 // ф-ия для получения изображения с canvas
 function getImage(ctx, w, h) {
     let imgData = ctx.getImageData(0, 0, w, h);
+    // console.log(imgData);
     // ctx.putImageData(imgData, 10, 10); // для проверки. Можно вывести на canvas нарисованное изображение (10, 10 - смещение по x и y)
 }
 
