@@ -27,7 +27,7 @@ $canvas.mousedown(function () {
 
     $canvas.mousemove(() => writing());
     $canvas.mouseup(() => {
-        mod.getImage(ctx);
+        mod.getImage(ctx, $canvas.width(), $canvas.height());
         stopWriting();
     });
     $canvas.mouseleave(() => stopWriting());

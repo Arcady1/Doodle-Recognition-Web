@@ -8,9 +8,9 @@
 // conds class_name = name_list[index]
 
 // ф-ия для получения изображения с canvas
-function getImage(ctx) {
-    let imgData = ctx.getImageData(0, 0, 1300, 734);
-    // ctx.putImageData(imgData, 10, 10); // для проверки. Можно вывести на canvas нарисованное изображение (10, 10 - смещение по x и y)
+function getImage(ctx, w, h) {
+    let imgData = ctx.getImageData(0, 0, w, h);
+    ctx.putImageData(imgData, 10, 10); // для проверки. Можно вывести на canvas нарисованное изображение (10, 10 - смещение по x и y)
 }
 
 module.exports = {
@@ -46,7 +46,7 @@ $canvas.mousedown(function () {
 
     $canvas.mousemove(() => writing());
     $canvas.mouseup(() => {
-        mod.getImage(ctx);
+        mod.getImage(ctx, $canvas.width(), $canvas.height());
         stopWriting();
     });
     $canvas.mouseleave(() => stopWriting());

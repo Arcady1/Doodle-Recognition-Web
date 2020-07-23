@@ -7,8 +7,8 @@
 // conds class_name = name_list[index]
 
 // ф-ия для получения изображения с canvas
-function getImage(ctx) {
-    let imgData = ctx.getImageData(0, 0, 1300, 734);
+function getImage(ctx, w, h) {
+    let imgData = ctx.getImageData(0, 0, w, h);
     // ctx.putImageData(imgData, 10, 10); // для проверки. Можно вывести на canvas нарисованное изображение (10, 10 - смещение по x и y)
 }
 
