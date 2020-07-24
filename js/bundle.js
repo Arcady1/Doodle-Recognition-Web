@@ -7,15 +7,38 @@
 // const index = numpyjs.argmax(prediction)[1]
 // conds class_name = name_list[index]
 
+let canv2 = document.getElementById('canv2'); // canvas-resizer (64x64)
+let ctx2 = canv2.getContext('2d');
+let imgSize = 64; // размер canv2
 // ф-ия для получения изображения с canvas
-function getImage(ctx, w, h) {
-    let imgData = ctx.getImageData(0, 0, w, h);
-    console.log(imgData);
-    // ctx.putImageData(imgData, 10, 10); // для проверки. Можно вывести на canvas нарисованное изображение (10, 10 - смещение по x и y)
+function getImage(canvas) {
+    let img2Data;
+
+    ctx2.drawImage(canvas, 0, 0, imgSize, imgSize); // рисует изображение с canvas в canv2
+    img2Data = ctx2.getImageData(0, 0, imgSize, imgSize); // массив чисел 0 - 255 - изображение canv2
+    console.log(img2Data);
+    // let imgBase64 = canv2.toDataURL().replace("data:image/png;base64,", ""); // base64 формат картинки canv2
+    // console.log(imgBase64);
+    check(img2Data);
+}
+// очистка canv2
+function cleanCanv2 () {
+    ctx2.clearRect(0, 0, imgSize, imgSize);
 }
 
+function check(array) {
+    for (let i = 0; i < array.data.length; i++) {
+        if ((array.data[i] < 255) && (array.data[i] != 0)) {
+            array.data[i] = 255;
+        }
+    }
+}
+// ! второй способ: сделать resize изображение с помощью модуля
+// вставить
+
 module.exports = {
-    "getImage": getImage
+    "getImage": getImage,
+    "cleanCanv2": cleanCanv2
 }
 },{}],2:[function(require,module,exports){
 let $penButton = $("#pen-button"); // ручка
@@ -24,6 +47,7 @@ let $clearButton = $("#clear-button"); // кнопка очистки
 let $navButtons = $(".nav__button"); // массив кнопок
 let $content__drowing = $('#content__drowing'); // обертка холста
 let $canvas = $('#content__canvas'); // canvas
+let canvas = document.getElementById('content__canvas'); // canvas
 let $canvasWrapper = $('#canvas__wrapper'); // обертка canvas для мыши
 let ctx = $canvas[0].getContext("2d"); // контекст canvas
 let eraser = false; // ластик выключен
@@ -102,13 +126,12 @@ function writing() {
 }
 // остановка рисования
 function stopWriting() {
-    mod.getImage(ctx, $canvas.width(), $canvas.height());
+    mod.getImage(canvas);
     ctx.beginPath();
     $canvas.off("mousemove");
 }
 // ф-ия изменяет размер canvas при изменении размера окна браузера
 function canvasResize() {
-    let canvas = document.getElementById('content__canvas');
     canvas.width = $content__drowing.width();
     canvas.height = $content__drowing.height();
 }
@@ -148,6 +171,8 @@ function activeButton(num) {
 function smoothCanvasClean() {
     let $canasVeil = $(".canas-veil"); // пелена для плавной очистки canvas
     let $canasVeilDuration = parseFloat($canasVeil.css("transition-duration")) * 1000;
+
+    mod.cleanCanv2();
 
     $canasVeil.css({
         "visibility": "visible",

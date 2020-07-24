@@ -4,6 +4,7 @@ let $clearButton = $("#clear-button"); // кнопка очистки
 let $navButtons = $(".nav__button"); // массив кнопок
 let $content__drowing = $('#content__drowing'); // обертка холста
 let $canvas = $('#content__canvas'); // canvas
+let canvas = document.getElementById('content__canvas'); // canvas
 let $canvasWrapper = $('#canvas__wrapper'); // обертка canvas для мыши
 let ctx = $canvas[0].getContext("2d"); // контекст canvas
 let eraser = false; // ластик выключен
@@ -82,13 +83,12 @@ function writing() {
 }
 // остановка рисования
 function stopWriting() {
-    mod.getImage(ctx, $canvas.width(), $canvas.height());
+    mod.getImage(canvas);
     ctx.beginPath();
     $canvas.off("mousemove");
 }
 // ф-ия изменяет размер canvas при изменении размера окна браузера
 function canvasResize() {
-    let canvas = document.getElementById('content__canvas');
     canvas.width = $content__drowing.width();
     canvas.height = $content__drowing.height();
 }
@@ -128,6 +128,8 @@ function activeButton(num) {
 function smoothCanvasClean() {
     let $canasVeil = $(".canas-veil"); // пелена для плавной очистки canvas
     let $canasVeilDuration = parseFloat($canasVeil.css("transition-duration")) * 1000;
+
+    mod.cleanCanv2();
 
     $canasVeil.css({
         "visibility": "visible",
