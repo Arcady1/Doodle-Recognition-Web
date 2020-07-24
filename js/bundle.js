@@ -16,25 +16,31 @@ function getImage(canvas) {
 
     ctx2.drawImage(canvas, 0, 0, imgSize, imgSize); // рисует изображение с canvas в canv2
     img2Data = ctx2.getImageData(0, 0, imgSize, imgSize); // массив чисел 0 - 255 - изображение canv2
+    img2Data = img2Data.data; // оставляем в img2Data просто массив чисел 
+    // ! массив размером 16.384, т.к. каждый пиксель в rgba формате => на один пиксель - 4 элемента => 64*64*4 = 16.384
+    img2Data = rgbaOnlyAImg(img2Data);
+    img2Data = bwImgColor(img2Data); // img2Data - массив из 64*64 = 4096 элементов (черно-белая картинка)
     console.log(img2Data);
-    // let imgBase64 = canv2.toDataURL().replace("data:image/png;base64,", ""); // base64 формат картинки canv2
-    // console.log(imgBase64);
-    check(img2Data);
 }
 // очистка canv2
-function cleanCanv2 () {
+function cleanCanv2() {
     ctx2.clearRect(0, 0, imgSize, imgSize);
 }
+// ф-ия чистит массив RGBA, оставляя только A
+function rgbaOnlyAImg(origArray) {
+    let resArray = [];
+    for (let i = 3; i < origArray.length; i += 4)
+        resArray.push(origArray[i]);
 
-function check(array) {
-    for (let i = 0; i < array.data.length; i++) {
-        if ((array.data[i] < 255) && (array.data[i] != 0)) {
-            array.data[i] = 255;
-        }
-    }
+    return resArray;
 }
-// ! второй способ: сделать resize изображение с помощью модуля
-// вставить
+// ф-ия делает изображение черно-белым
+function bwImgColor(imgData) {
+    for (let i = 0; i < imgData.length; i++)
+        if ((imgData[i] < 255) && (imgData[i] != 0))
+            imgData[i] = 255;
+    return imgData;
+}
 
 module.exports = {
     "getImage": getImage,
