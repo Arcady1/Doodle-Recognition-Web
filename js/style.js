@@ -27,7 +27,10 @@ $canvas.mousedown(function () {
         ctx.strokeStyle = "#000";
 
     $canvas.mousemove(() => writing());
-    $canvas.mouseup(() => stopWriting());
+    $canvas.mouseup(() => {
+        stopWriting();
+        mod.getImage(canvas);
+    });
     $canvas.mouseleave(() => stopWriting());
 });
 
@@ -83,7 +86,6 @@ function writing() {
 }
 // остановка рисования
 function stopWriting() {
-    mod.getImage(canvas);
     ctx.beginPath();
     $canvas.off("mousemove");
 }

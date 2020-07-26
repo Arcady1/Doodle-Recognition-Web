@@ -1,6 +1,3 @@
-// const model = await tf.loadLayersModel('../model/model.json');
-// Predict const prediction = model.predict(img); [1, 340] // flatten
-// const index = numpyjs.argmax(prediction)[1]
 // conds class_name = name_list[index]
 
 // modules 
@@ -10,30 +7,36 @@ const math = require('mathjs');
 let canv2 = document.getElementById('canv2'); // canvas-resizer (64x64)
 let ctx2 = canv2.getContext('2d');
 let imgSize = 64; // размер canv2
-
+let loadedModel = tfModelLoad(); // tf Model
 // ф-ия для получения изображения с canvas
 function getImage(canvas) {
-    // * preparing image
+    // Preparing image
     let img2Data;
     ctx2.drawImage(canvas, 0, 0, imgSize, imgSize); // рисует изображение с canvas в canv2
     img2Data = ctx2.getImageData(0, 0, imgSize, imgSize); // массив чисел 0 - 255 - изображение canv2
     img2Data = img2Data.data; // оставляем в img2Data просто массив чисел 
-    // массив размером 16.384, т.к. каждый пиксель в rgba формате => на один пиксель - 4 элемента => 64*64*4 = 16.384
-    img2Data = rgbaOnlyAImg(img2Data);
+    img2Data = rgbaOnlyAImg(img2Data); // массив размером 16.384, т.к. каждый пиксель в rgba формате => на один пиксель - 4 элемента => 64*64*4 = 16.384
     img2Data = bwImgColor(img2Data); // img2Data - массив из 64*64 = 4096 элементов (черно-белая картинка)
     img2Data = math.reshape(img2Data, [imgSize, imgSize, 1]); // reshape img2Data -> [64, 64, 1]
-    // * tf work
+    // TF work
     let img = tf.expandDims(img2Data, 0); // -> [1, 64, 64, 1]
-    console.log(img);
-    tfModelWork(img);
+    tfPredict(img);
 }
-// tf -> model -> predict
-async function tfModelWork(img) {
-    const model = await tf.loadLayersModel('../model/model.json');
-    let prediction = model.predict(img);
-    console.log(prediction);
+// Model loading
+async function tfModelLoad() {
+    const model = await tf.loadLayersModel('../model/mod1/model.json');
+    console.log('The Model was loaded!');
+    return model;
 }
-
+// Predict
+function tfPredict(img) {
+    let prediction = loadedModel.then((model) => {
+        let predictionResults = model.predict(img).arraySync(); // prediction Results
+        console.log(predictionResults);
+        let maxPredictValue = math.max(predictionResults);
+        console.log(maxPredictValue);
+    });
+}
 // additional functions
 // очистка canv2
 function cleanCanv2() {
@@ -54,7 +57,6 @@ function bwImgColor(imgData) {
             imgData[i] = 255;
     return imgData;
 }
-
 
 module.exports = {
     "getImage": getImage,
