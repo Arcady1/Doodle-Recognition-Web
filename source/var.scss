@@ -1,15 +1,29 @@
 $maxWidth: 100vw;
-// content__info
-$content__infoArea: 10vw;
+// title
+$lineHeight: 8rem;
 // info__nav
-$infoNavPad: 20px; // ?
+$infoNavPad: 20px;
 // nav__button
-$navButtonSize: 100px; // ?
-$navButtonRadius: 20px; // ?
-$navImgSize: 80%; // ?
-$navButtonMargin: 20px; // ?
+// button size
+$NavButtonSize: 6vw;
+$minNavButtonSize: 70px;
+$maxNavButtonSize: 100px;
+//
+$navButtonRadius: 20px;
+$navImgSize: 80%;
+$navButtonMargin: 20px;
+$navButtonBorder: 2px;
+$navButtonBoxShadow: 3px;
 // nav__button line-width
 $arrowSize: 14px;
-$lineWidth: 200px; // ?
-$lineWeightMargin: 10px; // ?
-$lineItemWeightMargin: 18px; // ?
+$lineWeightSize: 100% * 1.5;
+$lineWeightMargin: 10px;
+$lineItemWeightMargin: 18px;
+// canvas
+// canvas size
+$minCanvWidth: 305px;
+$maxCanvWidth: 1300px;
+//
+$newMouseBorder: 2px;
+$canvasShadow: 8px 8px 20px 0px #888;
+$veilDuration: .3s;

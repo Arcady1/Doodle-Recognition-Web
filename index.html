@@ -10,7 +10,11 @@
 
 <body>
     <div class="index-container">
-        <div class="index-content index-content_padding">
+        <div class="header">
+<div class="header__inner">
+    <p class="title">Doodle app name</p>
+</div>        </div>
+        <div class="index-content index-content_pading">
             <div class="content__info">
 <div class="info__nav info__nav_padding">
     <button class="nav__button pen-button" id="pen-button"></button>
@@ -30,19 +34,19 @@
         </div>
     </button>
 </div>            </div>
-            <div class="content__drowing content__drowing_padding" id="content__drowing">
-                <div class="canvas__wrapper" id="canvas__wrapper">
-                    <canvas class="content__canvas" id="content__canvas" resize="true" width="300" height="150"></canvas>
-                </div>
-                <div class="canvas-mouse" id="canvas-mouse"></div>
-            </div>
-            <div class="content__barplot">
-
-            </div>
+<div class="content__drowing" id="content__drowing">
+    <div class="canvas__wrapper" id="canvas__wrapper">
+        <canvas class="content__canvas" id="content__canvas" width="300" height="150"></canvas>
+    </div>
+    <div class="canvas-mouse" id="canvas-mouse"></div>
+    <div class="canas-veil"></div>
+</div>            <canvas id="canv2" width="64" height="64" style="outline: 1px solid #000; display: none;"></canvas>
         </div>
     </div>
+    <!-- Load jQuery -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/index.js"></script>
+    <!-- Load bundle.js -->
+    <script src="js/bundle.js"></script>
 </body>
 
 </html>

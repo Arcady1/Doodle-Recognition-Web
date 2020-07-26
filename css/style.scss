@@ -16,63 +16,33 @@ html {
 }
 
 .index-container {
-    width: $maxWidth;
-    height: 100vh;
+    max-width: $maxWidth;
+    height: 100%;
+
+    .header {
+        width: 100%;
+        // header__inner
+        @import '../blocks/header/header__inner-style';
+    }
 
     .index-content {
         display: flex;
+        justify-content: center;
         align-items: center;
+        flex-wrap: wrap;
         width: 100%;
-        height: 100%;
+        height: calc(100% - 8rem);
 
         // навигационная панель
         .content__info {
-            border: 2px solid #000;
-            border-radius: $navButtonRadius;
-
-            @import '../blocks/blocks/content/info__nav/info__nav-style';
+            @import '../blocks/content/info__nav/info__nav-style';
         }
 
         // canvas
-        .content__drowing {
-            width: 100vw - $content__infoArea;
-            height: 80%;
-
-            .canvas__wrapper {
-                cursor: none;
-
-                .content__canvas {
-                    display: block;
-                    outline: 1px solid #000;
-                }
-            }
-
-            .canvas-mouse {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 6px + 2px;
-                height: 6px + 2px;
-                z-index: -1;
-                border: 2px solid #000;
-                border-radius: 50%;
-            }
-        }
-
-        .content__drowing_padding {
-            padding: 0 3vw;
-        }
-
-        // Barplot
-        .content__barplot {
-            width: 100px;
-            height: 100px;
-            background-color: #000;
-        }
+        @import '../blocks/content/content__drowing/content__drowing-style.scss';
     }
 
-    .index-content_padding {
-        padding: 0 20px;
+    .index-content_pading {
+        padding-bottom: 2 * $infoNavPad;
     }
 }
