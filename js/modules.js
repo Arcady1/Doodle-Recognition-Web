@@ -10,6 +10,7 @@ const math = require('mathjs');
 let canv2 = document.getElementById('canv2'); // canvas-resizer (64x64)
 let ctx2 = canv2.getContext('2d');
 let imgSize = 64; // размер canv2
+
 // ф-ия для получения изображения с canvas
 function getImage(canvas) {
     // * preparing image
@@ -24,12 +25,13 @@ function getImage(canvas) {
     // * tf work
     let img = tf.expandDims(img2Data, 0); // -> [1, 64, 64, 1]
     console.log(img);
-    tfModelWork();
+    tfModelWork(img);
 }
 // tf -> model -> predict
-function tfModelWork() {
-    const model = await tf.loadLayersModel("../model/model.json");
-    // ! const prediction = model.predict(img);
+async function tfModelWork(img) {
+    const model = tf.loadLayersModel('../model/model.json');
+    let prediction = (await model).predict(img)
+    console.log(prediction);
 }
 
 // additional functions
