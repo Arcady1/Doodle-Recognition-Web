@@ -1,9 +1,11 @@
+// const model = await tf.loadLayersModel('../model/model.json');
 // Predict const prediction = model.predict(img); [1, 340] // flatten
 // const index = numpyjs.argmax(prediction)[1]
 // conds class_name = name_list[index]
 
 // modules 
 const tf = require('@tensorflow/tfjs');
+const math = require('mathjs');
 // vars
 let canv2 = document.getElementById('canv2'); // canvas-resizer (64x64)
 let ctx2 = canv2.getContext('2d');
@@ -18,9 +20,9 @@ function getImage(canvas) {
     // массив размером 16.384, т.к. каждый пиксель в rgba формате => на один пиксель - 4 элемента => 64*64*4 = 16.384
     img2Data = rgbaOnlyAImg(img2Data);
     img2Data = bwImgColor(img2Data); // img2Data - массив из 64*64 = 4096 элементов (черно-белая картинка)
-    console.log(img2Data);
+    img2Data = math.reshape(img2Data, [imgSize, imgSize, 1]); // reshape img2Data -> [64, 64, 1]
     // * tf work
-    let img = tf.expandDims(img2Data, 0);
+    let img = tf.expandDims(img2Data, 0); // -> [1, 64, 64, 1]
     console.log(img);
     // ! const model = await tf.loadLayersModel('../model/model.json');
     // ! const prediction = model.predict(img);
