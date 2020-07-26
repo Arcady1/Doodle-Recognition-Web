@@ -130,7 +130,6 @@ function smoothCanvasClean() {
     let $canasVeilDuration = parseFloat($canasVeil.css("transition-duration")) * 1000;
 
     mod.cleanCanv2();
-
     $canasVeil.css({
         "visibility": "visible",
         "opacity": 1

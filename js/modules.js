@@ -24,9 +24,15 @@ function getImage(canvas) {
     // * tf work
     let img = tf.expandDims(img2Data, 0); // -> [1, 64, 64, 1]
     console.log(img);
-    // ! const model = await tf.loadLayersModel('../model/model.json');
+    tfModelWork();
+}
+// tf -> model -> predict
+function tfModelWork() {
+    const model = await tf.loadLayersModel("../model/model.json");
     // ! const prediction = model.predict(img);
 }
+
+// additional functions
 // очистка canv2
 function cleanCanv2() {
     ctx2.clearRect(0, 0, imgSize, imgSize);
