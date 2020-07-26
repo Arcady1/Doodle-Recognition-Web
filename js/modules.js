@@ -29,8 +29,8 @@ function getImage(canvas) {
 }
 // tf -> model -> predict
 async function tfModelWork(img) {
-    const model = tf.loadLayersModel('../model/model.json');
-    let prediction = (await model).predict(img)
+    const model = await tf.loadLayersModel('../model/model.json');
+    let prediction = model.predict(img);
     console.log(prediction);
 }
 
