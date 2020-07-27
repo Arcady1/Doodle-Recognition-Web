@@ -14,7 +14,9 @@ let ctx = $canvas[0].getContext("2d"); // контекст canvas
 let eraser = false; // ластик выключен
 let lineWeights = document.getElementsByClassName("line-weight_hover__item"); // ширина кистей
 let $newMouse = $("#canvas-mouse"); // новый курсор
-
+// !
+let lineWeightFirst = 25; // also change in defaultSet -> ctx.lineWidth
+let lineWeightSecond = 45;
 // Canvas settings 
 // Resizing
 canvasResize();
@@ -39,44 +41,36 @@ $canvas.mousedown(function () {
 // * PAINT MENU
 // выбрано перо
 $penButton.click(() => {
-    eraser = false;
-    activeButton(0);
+    defaultSet();
 });
 // выбран ластик
 $eraserButton.click(() => {
     eraser = true;
+    ctx.lineWidth = lineWeightSecond;
     activeButton(1);
 });
 // очистка холста
 $clearButton.click(() => {
-    eraser = false;
-    activeButton(0);
+    defaultSet();
     smoothCanvasClean();
 });
 
 // * PEN WEIGHT
 lineWeights[0].onmousedown = () => {
-    ctx.lineWidth = 6;
+    ctx.lineWidth = lineWeightFirst;
     cursorResize(ctx.lineWidth);
 }
 lineWeights[1].onmousedown = () => {
-    ctx.lineWidth = 8;
-    cursorResize(ctx.lineWidth);
-}
-lineWeights[2].onmousedown = () => {
-    ctx.lineWidth = 10;
-    cursorResize(ctx.lineWidth);
-}
-lineWeights[3].onmousedown = () => {
-    ctx.lineWidth = 14;
+    ctx.lineWidth = 45;
     cursorResize(ctx.lineWidth);
 }
 
 // * MY FUNCTIONS
 // исходные настройки canvas
 function defaultSet() {
+    eraser = false;
     activeButton(0);
-    ctx.lineWidth = 6;
+    ctx.lineWidth = lineWeightFirst;
     cursorResize(ctx.lineWidth);
 }
 // ф-ия рисования линий

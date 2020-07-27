@@ -119,20 +119,10 @@
                 margin-bottom: $lineItemWeightMargin;
             }
 
-            &__item:first-child {
-                height: 6px;
-            }
-
-            &__item:nth-child(2) {
-                height: 8px;
-            }
-
-            &__item:nth-child(3) {
-                height: 10px;
-            }
-
-            &__item:nth-child(4) {
-                height: 14px;
+            @for $i from 1 to $numberOfLines + 1 {
+                &__item:nth-child(#{$i}) {
+                    height: $minLineWeight + $nextLineDelta * $i;
+                }
             }
 
             &__item:last-child {

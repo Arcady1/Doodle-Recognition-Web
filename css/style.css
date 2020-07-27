@@ -235,17 +235,11 @@ html {
   background-color: #000;
   margin-bottom: 18px;
 }
-.index-container .index-content .content__info .info__nav .line-width .line-weight_hover__item:first-child {
-  height: 6px;
+.index-container .index-content .content__info .info__nav .line-width .line-weight_hover__item:nth-child(1) {
+  height: 25px;
 }
 .index-container .index-content .content__info .info__nav .line-width .line-weight_hover__item:nth-child(2) {
-  height: 8px;
-}
-.index-container .index-content .content__info .info__nav .line-width .line-weight_hover__item:nth-child(3) {
-  height: 10px;
-}
-.index-container .index-content .content__info .info__nav .line-width .line-weight_hover__item:nth-child(4) {
-  height: 14px;
+  height: 45px;
 }
 .index-container .index-content .content__info .info__nav .line-width .line-weight_hover__item:last-child {
   margin-bottom: 0;

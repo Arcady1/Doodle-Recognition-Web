@@ -15,6 +15,9 @@ $navButtonMargin: 20px;
 $navButtonBorder: 2px;
 $navButtonBoxShadow: 3px;
 // nav__button line-width
+$numberOfLines: 2; // change HTML line-weight_hover
+$minLineWeight: 5px;
+$nextLineDelta: 20px;
 $arrowSize: 14px;
 $lineWeightSize: 100% * 1.5;
 $lineWeightMargin: 10px;
