@@ -1,10 +1,9 @@
 // modules
 const tf = require('@tensorflow/tfjs');
-const math = require('mathjs');
 
 // Model loading; function returns Promise
 async function tfModelLoad() {
-    const model = await tf.loadLayersModel('../model/mod1/model.json');
+    const model = await tf.loadLayersModel('../../model/converted_mobilenetv2/content/weights_js/model.json');
     console.log('The Model was loaded!');
     return model;
 }
@@ -23,17 +22,17 @@ function maxPredict(predictionResults) {
         "maxVal": 0,
         "maxValIndex": 0
     };
+    let currentMaxVal = 0;
+    let currentmaxValIndex = 0;
 
-    for (let i = 0; i < predictionResults.length - 1; i++) {
-        if (predictionResults[i] > predictionResults[i + 1]) {
-            maxPredictionResults.maxVal = predictionResults[i];
-            maxPredictionResults.maxValIndex = i;
-        } else {
-            maxPredictionResults.maxVal = predictionResults[i + 1];
-            maxPredictionResults.maxValIndex = i + 1;
+    for (let i = 0; i < predictionResults.length; i++) {
+        if (predictionResults[i] > currentMaxVal) {
+            currentMaxVal = predictionResults[i];
+            currentmaxValIndex = i;
+            maxPredictionResults.maxVal = currentMaxVal;
+            maxPredictionResults.maxValIndex = currentmaxValIndex;
         }
     }
-
     return maxPredictionResults;
 }
 
