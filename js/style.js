@@ -1,3 +1,7 @@
+// modules
+const mod = require('./main'); // модуль для npm пакетов
+const imgPreparing = require('./prj-modules/img-preparing');
+//vars
 let $penButton = $("#pen-button"); // ручка
 let $eraserButton = $("#eraser-button"); // ластик
 let $clearButton = $("#clear-button"); // кнопка очистки
@@ -11,13 +15,11 @@ let eraser = false; // ластик выключен
 let lineWeights = document.getElementsByClassName("line-weight_hover__item"); // ширина кистей
 let $newMouse = $("#canvas-mouse"); // новый курсор
 
-const mod = require('./modules'); // модуль для npm пакетов
-
 // Canvas settings 
 // Resizing
 canvasResize();
 $(window).resize(canvasResize);
-// Default settings
+// Default settingsmodules
 defaultSet();
 // Canvas writing
 $canvas.mousedown(function () {
@@ -29,7 +31,7 @@ $canvas.mousedown(function () {
     $canvas.mousemove(() => writing());
     $canvas.mouseup(() => {
         stopWriting();
-        mod.getImage(canvas);
+        mod.main(canvas);
     });
     $canvas.mouseleave(() => stopWriting());
 });
@@ -131,7 +133,7 @@ function smoothCanvasClean() {
     let $canasVeil = $(".canas-veil"); // пелена для плавной очистки canvas
     let $canasVeilDuration = parseFloat($canasVeil.css("transition-duration")) * 1000;
 
-    mod.cleanCanv2();
+    imgPreparing.cleanCanv2();
     $canasVeil.css({
         "visibility": "visible",
         "opacity": 1
