@@ -272,7 +272,6 @@ html {
 .index-container .index-content .content__drowing .canvas__wrapper {
   width: 100%;
   height: 100%;
-  cursor: none;
 }
 .index-container .index-content .content__drowing .canvas__wrapper .content__canvas {
   display: block;
@@ -280,16 +279,11 @@ html {
   height: 100%;
   box-shadow: 8px 8px 20px 0px #888;
 }
-.index-container .index-content .content__drowing .canvas-mouse {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #000;
-  border-radius: 50%;
+.index-container .index-content .content__drowing .wrapper__pointer25 {
+  cursor: url("../img/cursor/circle25.cur"), pointer;
+}
+.index-container .index-content .content__drowing .wrapper__pointer45 {
+  cursor: url("../img/cursor/circle45.cur"), pointer;
 }
 .index-container .index-content .content__drowing .canas-veil {
   display: block;

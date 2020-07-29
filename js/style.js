@@ -7,14 +7,15 @@ let $eraserButton = $("#eraser-button"); // Eraser
 let $clearButton = $("#clear-button"); // Clean
 let $navButtons = $(".nav__button"); // Array of button (pen, eraser, clean)
 let $contentDrowing = $('#content__drowing');
+let $canvastWrapper = $("#canvas__wrapper");
 let $canvas = $('#content__canvas'); // Canvas jQuery
 let canvas = document.getElementById('content__canvas'); // Canvas JS 
-let ctx = $canvas[0].getContext("2d"); 
+let ctx = $canvas[0].getContext("2d");
 let lineWeights = document.getElementsByClassName("line-weight_hover__item"); // Array of line Weights
-let $newMouse = $("#canvas-mouse"); // Curcle cursor
+// let $newMouse = $("#canvas-mouse"); // Curcle cursor
 
 // Eraser set
-let eraser = false; 
+let eraser = false;
 // Weight of pen / eraser line 
 let lineWeightFirst = 25;
 let lineWeightSecond = 45;
@@ -71,10 +72,12 @@ function buttonIsChacnged(isEraser = false, activeButtonNumberInMenu, newLineWei
 }
 // Line writing
 function writing() {
+    let lineWeight2 = ctx.lineWidth / 2;
+
     ctx.lineCap = "round";
-    ctx.lineTo(event.offsetX, event.offsetY);
+    ctx.lineTo(event.offsetX + lineWeight2, event.offsetY + lineWeight2);
     ctx.stroke();
-    ctx.moveTo(event.offsetX, event.offsetY);
+    ctx.moveTo(event.offsetX + lineWeight2, event.offsetY + lineWeight2);
 }
 // Stop writing
 function stopWriting() {
@@ -86,28 +89,16 @@ function canvasResize() {
     canvas.width = $contentDrowing.width();
     canvas.height = $contentDrowing.height();
 }
-// Cursor position changer
-$contentDrowing.mousemove((event) => {
-    let mouseWidtDiv2 = $newMouse.outerWidth() / 2;
-    $newMouse.css('display', 'block');
-    $newMouse.css({
-        "top": event.clientY - mouseWidtDiv2,
-        "left": event.clientX - mouseWidtDiv2
-    });
-});
-// Cursor removing 
-$contentDrowing.mouseleave(() => {
-    $newMouse.css('display', 'none');
-});
 // New cursor size
 function cursorResize(weightOfLine) {
-    let mouseBorder = parseInt($newMouse.css('border-width'));
-    let size = weightOfLine + mouseBorder;
-
-    $newMouse.css({
-        "width": size,
-        "height": size
-    });
+    if (weightOfLine == lineWeightFirst) {
+        $canvastWrapper.removeClass("wrapper__pointer45");
+        $canvastWrapper.addClass("wrapper__pointer25");
+    }
+    else if (weightOfLine == lineWeightSecond) {
+        $canvastWrapper.removeClass("wrapper__pointer25");
+        $canvastWrapper.addClass("wrapper__pointer45");
+    }
 }
 // Set the active button
 function activeButton(activeButtonMenuNum) {

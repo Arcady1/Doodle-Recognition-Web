@@ -8,7 +8,6 @@
     .canvas__wrapper {
         width: 100%;
         height: 100%;
-        cursor: none;
 
         .content__canvas {
             display: block;
@@ -18,16 +17,12 @@
         }
     }
 
-    .canvas-mouse {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        border-width: $newMouseBorder;
-        border-style: solid;
-        border-color: #000;
-        border-radius: 50%;
+    .wrapper__pointer25 {
+        cursor: url('../img/cursor/circle25.cur'), pointer;
+    }
+
+    .wrapper__pointer45 {
+        cursor: url('../img/cursor/circle45.cur'), pointer;
     }
 
     .canas-veil {
