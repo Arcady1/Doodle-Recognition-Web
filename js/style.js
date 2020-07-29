@@ -1,30 +1,32 @@
-// modules
+// Modules
 const mod = require('./main'); // модуль для npm пакетов
 const imgPreparing = require('./prj-modules/img-preparing');
-//vars
-let $penButton = $("#pen-button"); // ручка
-let $eraserButton = $("#eraser-button"); // ластик
-let $clearButton = $("#clear-button"); // кнопка очистки
-let $navButtons = $(".nav__button"); // массив кнопок
-let $content__drowing = $('#content__drowing'); // обертка холста
-let $canvas = $('#content__canvas'); // canvas
-let canvas = document.getElementById('content__canvas'); // canvas
-let $canvasWrapper = $('#canvas__wrapper'); // обертка canvas для мыши
-let ctx = $canvas[0].getContext("2d"); // контекст canvas
-let eraser = false; // ластик выключен
-let lineWeights = document.getElementsByClassName("line-weight_hover__item"); // ширина кистей
-let $newMouse = $("#canvas-mouse"); // новый курсор
-// !
-let lineWeightFirst = 25; // also change in defaultSet -> ctx.lineWidth
+// Vars
+let $penButton = $("#pen-button"); // pen
+let $eraserButton = $("#eraser-button"); // Eraser
+let $clearButton = $("#clear-button"); // Clean
+let $navButtons = $(".nav__button"); // Array of button (pen, eraser, clean)
+let $contentDrowing = $('#content__drowing');
+let $canvas = $('#content__canvas'); // Canvas jQuery
+let canvas = document.getElementById('content__canvas'); // Canvas JS 
+let ctx = $canvas[0].getContext("2d"); 
+let lineWeights = document.getElementsByClassName("line-weight_hover__item"); // Array of line Weights
+let $newMouse = $("#canvas-mouse"); // Curcle cursor
+
+// Eraser set
+let eraser = false; 
+// Weight of pen / eraser line 
+let lineWeightFirst = 25;
 let lineWeightSecond = 45;
-// Canvas settings 
+
 // Resizing
 canvasResize();
 $(window).resize(canvasResize);
-// Default settingsmodules
-defaultSet();
+// Default settings 
+buttonIsChacnged(false, 0, lineWeightFirst);
+
 // Canvas writing
-$canvas.mousedown(function () {
+$canvas.mousedown(() => {
     if (eraser == true)
         ctx.strokeStyle = "#fff";
     else
@@ -39,19 +41,13 @@ $canvas.mousedown(function () {
 });
 
 // * PAINT MENU
-// выбрано перо
-$penButton.click(() => {
-    defaultSet();
-});
-// выбран ластик
-$eraserButton.click(() => {
-    eraser = true;
-    ctx.lineWidth = lineWeightSecond;
-    activeButton(1);
-});
-// очистка холста
+// Pen
+$penButton.click(() => buttonIsChacnged(false, 0, lineWeightFirst));
+// Eraser
+$eraserButton.click(() => buttonIsChacnged(true, 1, lineWeightSecond));
+// Clean
 $clearButton.click(() => {
-    defaultSet();
+    buttonIsChacnged(false, 0, lineWeightFirst);
     smoothCanvasClean();
 });
 
@@ -61,37 +57,37 @@ lineWeights[0].onmousedown = () => {
     cursorResize(ctx.lineWidth);
 }
 lineWeights[1].onmousedown = () => {
-    ctx.lineWidth = 45;
+    ctx.lineWidth = lineWeightSecond;
     cursorResize(ctx.lineWidth);
 }
 
 // * MY FUNCTIONS
-// исходные настройки canvas
-function defaultSet() {
-    eraser = false;
-    activeButton(0);
-    ctx.lineWidth = lineWeightFirst;
-    cursorResize(ctx.lineWidth);
+// Cursor and LineWeight settings
+function buttonIsChacnged(isEraser = false, activeButtonNumberInMenu, newLineWeight) {
+    eraser = isEraser;
+    activeButton(activeButtonNumberInMenu);
+    ctx.lineWidth = newLineWeight;
+    cursorResize(newLineWeight);
 }
-// ф-ия рисования линий
+// Line writing
 function writing() {
     ctx.lineCap = "round";
     ctx.lineTo(event.offsetX, event.offsetY);
     ctx.stroke();
     ctx.moveTo(event.offsetX, event.offsetY);
 }
-// остановка рисования
+// Stop writing
 function stopWriting() {
     ctx.beginPath();
     $canvas.off("mousemove");
 }
-// ф-ия изменяет размер canvas при изменении размера окна браузера
+
 function canvasResize() {
-    canvas.width = $content__drowing.width();
-    canvas.height = $content__drowing.height();
+    canvas.width = $contentDrowing.width();
+    canvas.height = $contentDrowing.height();
 }
-// ф-ия меняет вид курсора
-$canvasWrapper.mousemove((event) => {
+// Cursor position changer
+$contentDrowing.mousemove((event) => {
     let mouseWidtDiv2 = $newMouse.outerWidth() / 2;
     $newMouse.css('display', 'block');
     $newMouse.css({
@@ -99,30 +95,30 @@ $canvasWrapper.mousemove((event) => {
         "left": event.clientX - mouseWidtDiv2
     });
 });
-// удаление курсора-круга из canvas
-$canvasWrapper.mouseleave(() => {
+// Cursor removing 
+$contentDrowing.mouseleave(() => {
     $newMouse.css('display', 'none');
 });
-// новый размер курсора
-function cursorResize(num) {
+// New cursor size
+function cursorResize(weightOfLine) {
     let mouseBorder = parseInt($newMouse.css('border-width'));
-    let size = num + mouseBorder;
+    let size = weightOfLine + mouseBorder;
 
     $newMouse.css({
         "width": size,
         "height": size
     });
 }
-// ф-ия устанавливает активную кнопку
-function activeButton(num) {
+// Set the active button
+function activeButton(activeButtonMenuNum) {
     $navButtons.each(function (index) {
-        if (index == num)
+        if (index == activeButtonMenuNum)
             $(this).addClass("active-button");
         else
             $(this).removeClass("active-button");
     });
 }
-// плавная очистка canvas
+
 function smoothCanvasClean() {
     let $canasVeil = $(".canas-veil"); // пелена для плавной очистки canvas
     let $canasVeilDuration = parseFloat($canasVeil.css("transition-duration")) * 1000;
@@ -132,8 +128,7 @@ function smoothCanvasClean() {
         "visibility": "visible",
         "opacity": 1
     });
-
-    // очистка canvas и скрытие пелены через N мсек, для плавности
+    // Tiding the veil
     setTimeout(() => {
         ctx.clearRect(0, 0, $canvas.width(), $canvas.height());
         $canasVeil.css({
