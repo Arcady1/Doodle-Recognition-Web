@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doodle Recognition</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="index-container" id="index-container">
+        <div class="header">
+<div class="header__inner">
+    <p class="title">Doodle app name</p>
+</div>        </div>
+        <div class="index-content index-content_pading">
+            <div class="content__info">
+<div class="info__nav info__nav_padding">
+    <button class="nav__button pen-button" id="pen-button"></button>
+    <button class="nav__button eraser-button" id="eraser-button"></button>
+    <button class="nav__button clear-button" id="clear-button"></button>
+    <button class="nav__button line-width">
+        <div class="line-width__item"></div>
+        <div class="line-width__item"></div>
+        <div class="line-width__item"></div>
+        <div class="line-width__item"></div>
+        <div class="arrow"></div>
+        <div class="line-weight_hover">
+            <div class="line-weight_hover__item"></div>
+            <div class="line-weight_hover__item"></div>
+        </div>
+    </button>
+</div>            </div>
+<div class="content__drowing" id="content__drowing">
+    <div class="canvas__wrapper wrapper__pointer25" id="canvas__wrapper">
+        <canvas class="content__canvas" id="content__canvas" width="300" height="150"></canvas>
+    </div>
+    <div class="canas-veil"></div>
+</div>            <canvas id="canv2" width="64" height="64" style="outline: 1px solid #000; display: block;"></canvas>
+        </div>
+    </div>
+    <!-- Load jQuery -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Load bundle.js -->
+    <script src="js/bundle.js"></script>
+</body>
+
+</html>
