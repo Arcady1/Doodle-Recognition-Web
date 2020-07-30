@@ -7,7 +7,7 @@ const ctx2 = canv2.getContext('2d');
 //vars
 let imgSize;
 
-// ф-ия для получения изображения с canvas
+// Getting the image from canvas
 function getImage(canvas, imageSize) {
     let img2Data, img;
     imgSize = imageSize;
@@ -21,7 +21,7 @@ function getImage(canvas, imageSize) {
 
     return img;
 }
-// ф-ия чистит массив RGBA, оставляя только A
+// RGBA -> only A
 function rgbaOnlyAImg(origArray) {
     let resArray = [];
     for (let i = 3; i < origArray.length; i += 4)
@@ -29,14 +29,14 @@ function rgbaOnlyAImg(origArray) {
 
     return resArray;
 }
-// ф-ия делает изображение черно-белым
+// Make the image black-and-white
 function bwImgColor(imgData) {
     for (let i = 0; i < imgData.length; i++)
         if ((imgData[i] < 255) && (imgData[i] != 0))
             imgData[i] = 255;
     return imgData;
 }
-// очистка canv2
+
 function cleanCanv2() {
     ctx2.clearRect(0, 0, imgSize, imgSize);
 }

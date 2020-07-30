@@ -12,7 +12,6 @@ let $canvas = $('#content__canvas'); // Canvas jQuery
 let canvas = document.getElementById('content__canvas'); // Canvas JS 
 let ctx = $canvas[0].getContext("2d");
 let lineWeights = document.getElementsByClassName("line-weight_hover__item"); // Array of line Weights
-// let $newMouse = $("#canvas-mouse"); // Curcle cursor
 
 // Eraser set
 let eraser = false;
@@ -36,9 +35,12 @@ $canvas.mousedown(() => {
     $canvas.mousemove(() => writing());
     $canvas.mouseup(() => {
         stopWriting();
-        mod.main(canvas);
     });
     $canvas.mouseleave(() => stopWriting());
+});
+// Processing the canvas image after MouseUp
+$canvastWrapper.mouseup(() => {
+    mod.main(canvas);
 });
 
 // * PAINT MENU
@@ -94,8 +96,7 @@ function cursorResize(weightOfLine) {
     if (weightOfLine == lineWeightFirst) {
         $canvastWrapper.removeClass("wrapper__pointer45");
         $canvastWrapper.addClass("wrapper__pointer25");
-    }
-    else if (weightOfLine == lineWeightSecond) {
+    } else if (weightOfLine == lineWeightSecond) {
         $canvastWrapper.removeClass("wrapper__pointer25");
         $canvastWrapper.addClass("wrapper__pointer45");
     }
