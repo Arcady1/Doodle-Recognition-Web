@@ -3,7 +3,6 @@
 // modules 
 const imgPreparing = require('./prj-modules/img-preparing');
 const tfModelWork = require('./prj-modules/tf-model-work');
-const predictionText = require('./style');
 // CONST 
 const imgSize = 64;
 const loadedModel = tfModelWork.tfModelLoad(); // tf Model

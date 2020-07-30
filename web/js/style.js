@@ -121,7 +121,7 @@ function smoothCanvasClean() {
         "visibility": "visible",
         "opacity": 1
     });
-    // Tiding the veil
+    // Hiding the veil
     setTimeout(() => {
         ctx.clearRect(0, 0, $canvas.width(), $canvas.height());
         $canasVeil.css({
