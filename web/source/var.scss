@@ -27,6 +27,14 @@ $lineItemWeightMargin: 18px;
 $minCanvWidth: 305px;
 $maxCanvWidth: 1300px;
 //
-$newMouseBorder: 2px;
 $canvasShadow: 8px 8px 20px 0px #888;
 $veilDuration: .3s;
+// dialog window
+$dialogWindowColor: #eee;
+$ellipsisSize: 40px;
+$dialogMinWidth: 200px; // also change .content__predict-window left
+$dialogHeight: 55px;
+$textWindowHeight: 40px; // must be less than $dialogHeight
+$textWindowBorderRadius: 7px;
+$dialogWindowPadding: 10px;
+$dialogWindowFontSize: 1.3rem;

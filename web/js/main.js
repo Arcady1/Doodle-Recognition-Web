@@ -6,6 +6,8 @@ const tfModelWork = require('./prj-modules/tf-model-work');
 // CONST 
 const imgSize = 64;
 const loadedModel = tfModelWork.tfModelLoad(); // tf Model
+// Vars
+let $predictionTextWindow = $("#predict-main-window"); // Predict text 
 
 function main(canvas) {
     let img = imgPreparing.getImage(canvas, imgSize); // Prepared img -> [1, 64, 64, 1]
@@ -16,17 +18,21 @@ function main(canvas) {
         });
     });
     Promise.all([maxPredictValue, categories_listGetter]).then((val) => {
-        console.log('It is ' + val[1][val[0].maxValIndex]);
+        predictionTextSettings(false, val[1][val[0].maxValIndex] + '?');
     });
-    // ! results
-    // categories_listGetter.then(() => {
-    //     console.log(categories_list);
-    // });
-    // maxPredictValue.then((res) => {
-    //     console.log(res);
-    // });
+}
+
+function predictionTextSettings(setEllipsis = true, text = '') {
+    if (setEllipsis) {
+        text = '';
+        $predictionTextWindow.addClass("main-window_ellipsis");
+    } else
+        $predictionTextWindow.removeClass("main-window_ellipsis");
+
+    $predictionTextWindow.html(text);
 }
 
 module.exports = {
-    "main": main
+    "main": main,
+    "predictionTextSettings": predictionTextSettings
 }

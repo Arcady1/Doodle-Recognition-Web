@@ -43,6 +43,6 @@ html {
     }
 
     .index-content_pading {
-        padding-bottom: 2 * $infoNavPad;
+        padding: 0 $infoNavPad 2 * $infoNavPad 0;
     }
 }
