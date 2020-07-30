@@ -41,4 +41,48 @@
         transition-timing-function: ease;
         transition-delay: 0;
     }
+
+    .content__predict-window {
+        position: absolute;
+        display: block;
+        min-width: $dialogMinWidth;
+        height: $dialogHeight;
+        bottom: 0;
+        left: calc(50% - 100px); // $dialogHeight / 2
+
+        .main-window {
+            display: block;
+            width: 100%;
+            height: $textWindowHeight;
+            border-radius: $textWindowBorderRadius;
+            background-color: $dialogWindowColor;
+
+            font-family: 'Sedgwick Ave', cursive;
+            font-size: $dialogWindowFontSize;
+            text-align: center;
+            line-height: $textWindowHeight;
+        }
+
+        .main-window_ellipsis {
+            background-image: url('../img/ellipsis/Ellipsis2.gif');
+            background-repeat: no-repeat;
+            background-size: $ellipsisSize $ellipsisSize;
+            background-position: center;
+        }
+
+        .main-window_padding {
+            padding: 0 $dialogWindowPadding;
+        }
+
+        .tail-window {
+            display: block;
+            width: 0;
+            height: 0;
+            border-bottom: $dialogHeight - $textWindowHeight solid transparent;
+            border-left: $dialogHeight - $textWindowHeight solid transparent;
+            border-right: $dialogHeight - $textWindowHeight solid transparent;
+            border-top: $dialogHeight - $textWindowHeight solid $dialogWindowColor;
+            margin-left: calc(50% - 15px); // 50% - $dialogHeight - $textWindowHeight
+        }
+    }
 }

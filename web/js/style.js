@@ -1,5 +1,5 @@
 // Modules
-const mod = require('./main'); // модуль для npm пакетов
+const main = require('./main');
 const imgPreparing = require('./prj-modules/img-preparing');
 // Vars
 let $penButton = $("#pen-button"); // pen
@@ -40,7 +40,7 @@ $canvas.mousedown(() => {
 });
 // Processing the canvas image after MouseUp
 $canvastWrapper.mouseup(() => {
-    mod.main(canvas);
+    main.main(canvas);
 });
 
 // * PAINT MENU
@@ -50,6 +50,7 @@ $penButton.click(() => buttonIsChacnged(false, 0, lineWeightFirst));
 $eraserButton.click(() => buttonIsChacnged(true, 1, lineWeightSecond));
 // Clean
 $clearButton.click(() => {
+    main.predictionTextSettings();
     buttonIsChacnged(false, 0, lineWeightFirst);
     smoothCanvasClean();
 });
