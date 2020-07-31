@@ -1,2 +1,4 @@
 prepros.config
 node_modules
+web/*.scss
+web/*.kit
