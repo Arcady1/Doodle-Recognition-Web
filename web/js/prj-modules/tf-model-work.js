@@ -3,7 +3,7 @@ const tf = require('@tensorflow/tfjs');
 
 // Model loading; function returns Promise
 async function tfModelLoad() {
-    const model = await tf.loadLayersModel('../../../model/converted_mobilenetv2/content/weights_js/model.json');
+    const model = await tf.loadLayersModel('../../../model/v3-31.07/converted_weights/content/weights_js/model.json');
     console.log('The Model was loaded!');
     return model;
 }

@@ -1,5 +1,3 @@
-// ! html, css, bundle.js - minify, css - webkit
-
 // modules 
 const imgPreparing = require('./prj-modules/img-preparing');
 const tfModelWork = require('./prj-modules/tf-model-work');
