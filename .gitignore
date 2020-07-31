@@ -1,4 +1,10 @@
 prepros.config
-node_modules
-web/*.scss
+web/node_modules
+web/blocks
+web/css/*.scss
+web/fonts
 web/source
+web/js/prj-modules
+web/js/main.js
+web/js/style.js
+web/*.kit
