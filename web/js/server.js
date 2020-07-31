@@ -1,7 +1,12 @@
-let express = require('express'),
-    app = express();
-app.set('port', 8080);
-app.use(express.static(__dirname));
-app.listen(app.get('port'), function () {
-    console.log('Server started: http://localhost:' + app.get('port') + '/');
+const express = require("express");
+const app = express();
+
+app.use(express.static("public"));
+app.get("/", (request, response) => {
+    response.sendFile("/home/arkady/Документы/GitHub_Repository/Doodle-Recognition-Web/web/index.html");
+});
+
+const listener = app.listen(8080, () => {
+    console.log("Your app is listening on port " + listener.address().port);
+    console.log('Server started: http://localhost:' + 8080 + '/');
 });
