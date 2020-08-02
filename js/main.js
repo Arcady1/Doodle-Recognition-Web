@@ -30,6 +30,7 @@ function predictionTextSettings(setEllipsis = true, text = '', unsortedPredictio
             $predictionTextWindow.addClass("main-window_ellipsis");
         }
     } else {
+        let unsortedPredictionArr_ = unsortedPredictionArr.slice(); // unsortedPredictionArr copy 
         let topPredictionArr = bestResults(unsortedPredictionArr);
 
         for (let i = 0; i < numberOfTopResults; i++) {
@@ -37,8 +38,7 @@ function predictionTextSettings(setEllipsis = true, text = '', unsortedPredictio
                 text += " , ";
             else if (i == numberOfTopResults - 1)
                 text += " and ";
-
-            text += categoryListItem(unsortedPredictionArr, topPredictionArr[i], categoriesList);
+            text += categoryListItem(unsortedPredictionArr_, topPredictionArr[i], categoriesList);
         }
     }
     $predictionTextWindow.html(text);
@@ -90,12 +90,10 @@ function qSort(arr, left = 0, right = arr.length - 1) {
     return arr;
 }
 // Categories-list searching 
-function categoryListItem(unsortedPredictionArray, topPredictionValue, categoriesList_) {
-    for (let i = 0; i < unsortedPredictionArray.length; i++)
-        if (unsortedPredictionArray[i] == topPredictionValue) {
-            // ! console.log(categoriesList_[i]);
+function categoryListItem(unsortedPredictionArr__, topPredictionValue, categoriesList_) {
+    for (let i = 0; i < unsortedPredictionArr__.length; i++)
+        if (unsortedPredictionArr__[i] == topPredictionValue)
             return categoriesList_[i];
-        }
 }
 
 module.exports = {
