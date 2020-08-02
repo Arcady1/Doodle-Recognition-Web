@@ -28,18 +28,14 @@ function main(canvas) {
 }
 
 function predictionTextSettings(setEllipsis = true, text = '', topResults = null) {
+    $predictionTextWindow.removeClass("main-window_ellipsis");
+    
     if (topResults == null) {
         if (setEllipsis) {
             text = '';
             $predictionTextWindow.addClass("main-window_ellipsis");
-        } else {
-            $predictionTextWindow.removeClass("main-window_ellipsis");
         }
-    }
-
-    else {
-        $predictionTextWindow.removeClass("main-window_ellipsis");
-
+    } else {
         for (let i = 1; i < numberOfTopResults + 1; i++) {
             if (i > 1) {
                 text += " , ";
