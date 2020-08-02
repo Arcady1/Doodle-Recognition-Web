@@ -29,27 +29,26 @@ function main(canvas) {
 
 function predictionTextSettings(setEllipsis = true, text = '', topResults = null) {
     $predictionTextWindow.removeClass("main-window_ellipsis");
-    
+
     if (topResults == null) {
         if (setEllipsis) {
             text = '';
             $predictionTextWindow.addClass("main-window_ellipsis");
         }
     } else {
-        for (let i = 1; i < numberOfTopResults + 1; i++) {
-            if (i > 1) {
+        for (let i = 0; i < numberOfTopResults; i++) {
+            if (i > 0)
                 text += " , ";
-            }
-            text += topResults[numberOfTopResults - i];
+
+            text += topResults[i];
         }
     }
-
     $predictionTextWindow.html(text);
 }
 // Function returns top numberOfTopResults predictions; input: array of predictions
 function bestResults(predictArr) {
     let resultOfSort = qSort(predictArr);
-    resultOfSort.length = numberOfTopResults;
+    resultOfSort = resultOfSort.splice(resultOfSort.length - numberOfTopResults, numberOfTopResults);
 
     return resultOfSort;
 }
