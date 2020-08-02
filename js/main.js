@@ -1,9 +1,6 @@
 // modules 
 const imgPreparing = require('./prj-modules/img-preparing');
 const tfModelWork = require('./prj-modules/tf-model-work');
-const {
-    func
-} = require('@tensorflow/tfjs-data');
 // CONST 
 const imgSize = 64;
 const numberOfTopResults = 3;
@@ -20,36 +17,36 @@ function main(canvas) {
         });
     });
     Promise.all([arrayOfPredictions, categories_listGetter]).then((val) => {
-        let topResults = bestResults(val[0]);
-        console.log(val);
-        console.log(topResults);
-        predictionTextSettings(false, "It looks like ", topResults);
+        predictionTextSettings(false, "It looks like ", val[0], val[1]);
     });
 }
 
-function predictionTextSettings(setEllipsis = true, text = '', topResults = null) {
+function predictionTextSettings(setEllipsis = true, text = '', unsortedPredictionArr = null, categoriesList = null) {
     $predictionTextWindow.removeClass("main-window_ellipsis");
 
-    if (topResults == null) {
+    if (unsortedPredictionArr == null) {
         if (setEllipsis) {
             text = '';
             $predictionTextWindow.addClass("main-window_ellipsis");
         }
     } else {
+        let topPredictionArr = bestResults(unsortedPredictionArr);
+
         for (let i = 0; i < numberOfTopResults; i++) {
             if ((i > 0) && (i != numberOfTopResults - 1))
                 text += " , ";
             else if (i == numberOfTopResults - 1)
                 text += " and ";
-            text += topResults[i];
+
+            text += categoryListItem(unsortedPredictionArr, topPredictionArr[i], categoriesList);
         }
     }
     $predictionTextWindow.html(text);
 }
-// Function returns top numberOfTopResults predictions; input: array of predictions
+// Function returns top numberOfTopResults predictions; input: array of predictions; output: Last numberOfTopResults elements 
 function bestResults(predictArr) {
     let resultOfSort = qSort(predictArr);
-    return resultOfSort.splice(resultOfSort.length - numberOfTopResults, numberOfTopResults);
+    return resultOfSort.slice(-numberOfTopResults);
 }
 // Quick Sort
 function qSort(arr, left = 0, right = arr.length - 1) {
@@ -91,6 +88,14 @@ function qSort(arr, left = 0, right = arr.length - 1) {
     }
 
     return arr;
+}
+// Categories-list searching 
+function categoryListItem(unsortedPredictionArray, topPredictionValue, categoriesList_) {
+    for (let i = 0; i < unsortedPredictionArray.length; i++)
+        if (unsortedPredictionArray[i] == topPredictionValue) {
+            // ! console.log(categoriesList_[i]);
+            return categoriesList_[i];
+        }
 }
 
 module.exports = {
