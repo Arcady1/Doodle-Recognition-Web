@@ -37,9 +37,10 @@ function predictionTextSettings(setEllipsis = true, text = '', topResults = null
         }
     } else {
         for (let i = 0; i < numberOfTopResults; i++) {
-            if (i > 0)
+            if ((i > 0) && (i != numberOfTopResults - 1))
                 text += " , ";
-
+            else if (i == numberOfTopResults - 1)
+                text += " and ";
             text += topResults[i];
         }
     }
@@ -48,11 +49,9 @@ function predictionTextSettings(setEllipsis = true, text = '', topResults = null
 // Function returns top numberOfTopResults predictions; input: array of predictions
 function bestResults(predictArr) {
     let resultOfSort = qSort(predictArr);
-    resultOfSort = resultOfSort.splice(resultOfSort.length - numberOfTopResults, numberOfTopResults);
-
-    return resultOfSort;
+    return resultOfSort.splice(resultOfSort.length - numberOfTopResults, numberOfTopResults);
 }
-
+// Quick Sort
 function qSort(arr, left = 0, right = arr.length - 1) {
     let index, len = arr.length;
 
