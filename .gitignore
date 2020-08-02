@@ -1,4 +1,3 @@
-prepros.config
 node_modules
 blocks
 *.scss
@@ -8,3 +7,5 @@ js/prj-modules
 js/main.js
 js/style.js
 *.kit
+prepros.config
+package-lock.json
