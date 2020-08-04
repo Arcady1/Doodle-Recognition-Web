@@ -35,7 +35,7 @@ function predictionTextSettings(setEllipsis = true, text = '', unsortedPredictio
 
         for (let i = 0; i < numberOfTopResults; i++) {
             if ((i > 0) && (i != numberOfTopResults - 1))
-                text += " , ";
+                text += ", ";
             else if (i == numberOfTopResults - 1)
                 text += " and ";
             text += categoryListItem(unsortedPredictionArr_, topPredictionArr[i], categoriesList);
