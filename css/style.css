@@ -306,18 +306,25 @@ html {
   transition-timing-function: ease;
   transition-delay: 0;
 }
-.index-container .index-content .content__drowing .content__predict-window {
+.index-container .index-content .content__drowing .predict-window__wrapper {
   position: absolute;
-  display: block;
-  min-width: 200px;
-  height: 55px;
-  bottom: 0;
-  left: calc(50% - 100px);
-}
-.index-container .index-content .content__drowing .content__predict-window .main-window {
-  display: block;
   width: 100%;
-  height: 40px;
+  height: auto;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+}
+.index-container .index-content .content__drowing .predict-window__wrapper .content__predict-window {
+  display: inline-block;
+  vertical-align: bottom;
+  min-width: 200px;
+  min-height: 55px;
+  margin: 0 auto;
+  margin-bottom: -15px;
+}
+.index-container .index-content .content__drowing .predict-window__wrapper .content__predict-window .main-window {
+  width: 100%;
+  min-height: 40px;
   border-radius: 7px;
   background-color: #eee;
   font-family: "Sedgwick Ave", cursive;
@@ -325,16 +332,16 @@ html {
   text-align: center;
   line-height: 40px;
 }
-.index-container .index-content .content__drowing .content__predict-window .main-window_ellipsis {
+.index-container .index-content .content__drowing .predict-window__wrapper .content__predict-window .main-window_ellipsis {
   background-image: url("../img/ellipsis/Ellipsis.gif");
   background-repeat: no-repeat;
   background-size: 40px 40px;
   background-position: center;
 }
-.index-container .index-content .content__drowing .content__predict-window .main-window_padding {
+.index-container .index-content .content__drowing .predict-window__wrapper .content__predict-window .main-window_padding {
   padding: 0 10px;
 }
-.index-container .index-content .content__drowing .content__predict-window .tail-window {
+.index-container .index-content .content__drowing .predict-window__wrapper .content__predict-window .tail-window {
   display: block;
   width: 0;
   height: 0;
@@ -342,7 +349,7 @@ html {
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
   border-top: 15px solid #eee;
-  margin-left: calc(50% - 15px);
+  margin: 0 auto;
 }
 .index-container .index-content_pading {
   padding: 0 20px 40px 0;
