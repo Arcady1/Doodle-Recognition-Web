@@ -21,7 +21,9 @@ $nextLineDelta: 20px;
 $arrowSize: 14px;
 $lineWeightSize: 100% * 1.5;
 $lineWeightMargin: 10px;
-$lineItemWeightMargin: 18px;
+$lineItemWeightMargin: 1rem;
+// Arrow
+$arrowLeft: .4rem; // also change .arrow
 // content size
 $contentAndCanvasSize: 80vh;
 // canvas

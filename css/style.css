@@ -131,6 +131,17 @@ h1, h2, h3, h4, h5, h6 {
   .info__nav .nav__button:last-child {
     margin-right: 0 !important;
   }
+  .info__nav .line-width__wrapper .arrow {
+    border-left: 14px solid transparent !important;
+    border-right: 14px solid transparent !important;
+    border-top: 14px solid #000 !important;
+    top: 100% !important;
+    left: calc(50% - 14px) !important;
+  }
+  .info__nav .line-width__wrapper .line-weight_hover {
+    top: calc(100% + 14px) !important;
+    left: -16px !important;
+  }
 
   .info__nav button:last-child {
     margin-bottom: 1.5rem !important;
@@ -220,7 +231,7 @@ html {
   justify-content: center;
   overflow: hidden;
   width: calc(100% - 2rem);
-  height: calc(100% - 2rem);
+  height: calc(100% - 1.04rem);
   margin: 0 auto;
 }
 .index-container .index-content .content__info .info__nav .line-width .line-width__wrapper .line-width__item {
@@ -256,20 +267,20 @@ html {
   border-bottom: 14px solid transparent;
   border-left: 14px solid #000;
   top: calc(50% - 14px);
-  left: 100%;
+  left: calc(100% + .4rem);
 }
 .index-container .index-content .content__info .info__nav .line-width .line-width__wrapper .line-weight_hover {
   width: 150%;
   bottom: 0;
-  left: calc(100% + 14px);
+  left: calc(100% + 1.2rem );
   background-color: #fff;
   z-index: 1;
-  padding: 20px;
+  padding: 1rem;
 }
 .index-container .index-content .content__info .info__nav .line-width .line-width__wrapper .line-weight_hover__item {
   width: 100%;
   background-color: #000;
-  margin-bottom: 18px;
+  margin-bottom: 1rem;
 }
 .index-container .index-content .content__info .info__nav .line-width .line-width__wrapper .line-weight_hover__item:nth-child(1) {
   height: 25px;

@@ -64,7 +64,7 @@
             justify-content: center;
             overflow: hidden;
             width: calc(100% - 2rem);
-            height: calc(100% - 2rem);
+            height: calc(100% - 1.04rem);
             margin: 0 auto;
 
             .line-width__item {
@@ -106,16 +106,16 @@
                 border-bottom: $arrowSize solid transparent;
                 border-left: $arrowSize solid #000;
                 top: calc(50% - 14px);
-                left: 100%;
+                left: calc(100% + .4rem); // $arrowLeft
             }
 
             .line-weight_hover {
                 width: $lineWeightSize;
                 bottom: 0;
-                left: calc(100% + 14px);
+                left: calc(100% + 1.2rem ); // $arrowLeft * 3
                 background-color: #fff;
                 z-index: 1;
-                padding: 20px;
+                padding: 1rem;
                 @extend %nav__item_borders;
 
                 &__item {

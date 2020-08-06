@@ -22,6 +22,7 @@
     html {
         font-size: 16px !important;
     }
+
     // info-nav
     .info__nav_padding {
         padding: $navButtonMargin !important;
@@ -53,6 +54,22 @@
 
         .nav__button:last-child {
             margin-right: 0 !important;
+        }
+
+        // line-weight
+        .line-width__wrapper {
+            .arrow {
+                border-left: $arrowSize solid transparent !important;
+                border-right: $arrowSize solid transparent !important;
+                border-top: $arrowSize solid #000 !important;
+                top: 100% !important;
+                left: calc(50% - 14px) !important;
+            }
+
+            .line-weight_hover {
+                top: calc(100% + 14px) !important;
+                left: -16px !important;
+            }
         }
     }
 
