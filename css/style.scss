@@ -17,7 +17,6 @@ html {
 
 .index-container {
     max-width: $maxWidth;
-    height: 100%;
 
     .header {
         width: 100%;
@@ -31,7 +30,6 @@ html {
         align-items: center;
         flex-wrap: wrap;
         width: 100%;
-        height: calc(100% - 8rem);
 
         // навигационная панель
         .content__info {

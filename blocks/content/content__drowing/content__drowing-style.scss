@@ -2,7 +2,7 @@
     flex-grow: 1;
     min-width: $minCanvWidth;
     max-width: $maxCanvWidth;
-    height: 100%;
+    height: $contentAndCanvasSize;
     position: relative;
 
     .canvas__wrapper {

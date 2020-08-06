@@ -117,18 +117,15 @@ html {
 
 .index-container {
   max-width: 100vw;
-  height: 100%;
 }
 .index-container .header {
   width: 100%;
 }
 .index-container .header .header__inner {
   width: 100%;
-  height: 100%;
 }
 .index-container .header .header__inner .title {
   width: 100%;
-  height: 100%;
   text-align: center;
   font-size: 3rem;
   line-height: 8rem;
@@ -141,7 +138,6 @@ html {
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
-  height: calc(100% - 8rem);
 }
 .index-container .index-content .content__info .info__nav {
   flex-grow: 1;
@@ -271,7 +267,7 @@ html {
   flex-grow: 1;
   min-width: 305px;
   max-width: 1300px;
-  height: 100%;
+  height: 80vh;
   position: relative;
 }
 .index-container .index-content .content__drowing .canvas__wrapper {
