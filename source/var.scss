@@ -6,14 +6,14 @@ $infoNavPad: 20px;
 // nav__button
 // button size
 $NavButtonSize: 6vw;
-$minNavButtonSize: 70px;
+$minNavButtonSize: 60px;
 $maxNavButtonSize: 100px;
 //
-$navButtonRadius: 20px;
+$navButtonRadius: 1.2rem;
 $navImgSize: 80%;
-$navButtonMargin: 20px;
-$navButtonBorder: 2px;
-$navButtonBoxShadow: 3px;
+$navButtonMargin: 1.5rem;
+$navButtonBorder: .15rem; // also change .info__nav_padding
+$navButtonBoxShadow: .2rem; // also change .info__nav_padding
 // nav__button line-width
 $numberOfLines: 2; // change HTML line-weight_hover
 $minLineWeight: 5px;
@@ -26,7 +26,7 @@ $lineItemWeightMargin: 18px;
 $contentAndCanvasSize: 80vh;
 // canvas
 // canvas size
-$minCanvWidth: 305px;
+$minCanvWidth: 295px;
 $maxCanvWidth: 1300px;
 //
 $canvasShadow: 8px 8px 20px 0px #888;
