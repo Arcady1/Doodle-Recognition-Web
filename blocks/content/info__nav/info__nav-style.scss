@@ -110,28 +110,40 @@
             }
 
             .line-weight_hover {
+                display: flex;
+                align-items: center;
                 width: $lineWeightSize;
+                height: $lineWeightBlockHeight;
                 bottom: 0;
-                left: calc(100% + 1.2rem ); // $arrowLeft * 3
+                left: calc(100% + 1.2rem); // $arrowLeft * 3
                 background-color: #fff;
                 z-index: 1;
-                padding: 1rem;
                 @extend %nav__item_borders;
 
-                &__item {
-                    width: 100%;
-                    background-color: #000;
-                    margin-bottom: $lineItemWeightMargin;
-                }
+                .line-weight_hover__wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    width: calc(100% - 2rem);
+                    height: calc(100% - 2rem);
+                    margin: 0 auto;
+                    overflow: hidden;
 
-                @for $i from 1 to $numberOfLines+1 {
-                    &__item:nth-child(#{$i}) {
-                        height: $minLineWeight + $nextLineDelta * $i;
+                    .line-weight_hover__item {
+                        width: 100%;
+                        background-color: #000;
+                        margin: 0 auto $lineItemWeightMargin auto;
                     }
-                }
 
-                &__item:last-child {
-                    margin-bottom: 0;
+                    @for $i from 1 to $numberOfLines+1 {
+                        .line-weight_hover__item:nth-child(#{$i}) {
+                            height: $minLineWeight + $nextLineDelta * $i;
+                        }
+                    }
+
+                    .line-weight_hover__item:last-child {
+                        margin-bottom: 0;
+                    }
                 }
             }
 

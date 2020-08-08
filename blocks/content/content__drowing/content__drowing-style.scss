@@ -63,6 +63,7 @@
                 min-height: $textWindowHeight;
                 border-radius: $textWindowBorderRadius;
                 background-color: $dialogWindowColor;
+                transition: $ellipsisTransition;
 
                 font-family: 'Sedgwick Ave', cursive;
                 font-size: $dialogWindowFontSize;
