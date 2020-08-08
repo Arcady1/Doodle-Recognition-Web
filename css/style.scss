@@ -16,21 +16,8 @@ html {
 }
 
 .index-container {
-    .preloader {
-        display: block;
-        position: fixed;
-        width: 100%;
-        height: 100vh;
-        z-index: 9999;
-        overflow: hidden;
-        opacity: 1;
-        background: $preloaderBackgroundColor url('../img/preloader/preloader.svg') center/auto 1.4rem no-repeat;
-
-        transition-property: all;
-        transition-duration: $preloaderTransitionDuration;
-        transition-timing-function: ease-in-out;
-        transition-delay: 0;
-    }
+    // preloader
+    @import '../blocks/preloader/preloader-style';
 
     max-width: $maxWidth;
 
