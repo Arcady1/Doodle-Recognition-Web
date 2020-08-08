@@ -100,15 +100,15 @@ function qSort(arr, left = 0, right = arr.length - 1) {
 
 // Categories-list searching 
 function categoryListItem(unsortedPredictionArr__, topPredictionValue, currentIndex, categoriesList_, topPredictionArr_) {
-    for (let i = 0; i < unsortedPredictionArr__.length; i++) {
-        if (unsortedPredictionArr__[i] == topPredictionValue) {
-            if (blackListCategories.includes(categoriesList_[i])) {
-                topPredictionArr_.splice(topPredictionArr_.length - 1 * numberOfTopResults + currentIndex, 1);
-                categoryListItem(unsortedPredictionArr__, topPredictionArr_.slice(-1 * numberOfTopResults)[0], currentIndex, categoriesList_, topPredictionArr_);
+    unsortedPredictionArr__.forEach((element, index) => {
+        if (element == topPredictionValue) {
+            if (blackListCategories.includes(categoriesList_[index])) {
+                topPredictionArr_.splice(topPredictionArr_.length - 1 * numberOfTopResults + currentIndex, 1); // Removing the predict from "topPredictionArr_"
+                categoryListItem(unsortedPredictionArr__, topPredictionArr_.slice(-1 * numberOfTopResults)[0], currentIndex, categoriesList_, topPredictionArr_); // Recursive call "categoryListItem" function for removing all "blackList" categories
             } else
-                resultOfPredictions.push(categoriesList_[i]);
+                resultOfPredictions.push(categoriesList_[index]);
         }
-    }
+    });
 }
 
 module.exports = {
