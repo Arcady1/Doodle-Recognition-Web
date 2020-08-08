@@ -31,6 +31,12 @@
 }
 
 // adaptive
+@media (max-width: 425px) {
+    .header__inner .title {
+        font-size: 2.8rem !important;
+    }
+}
+
 @media (max-width: 640px) {
 
     // content
