@@ -1,12 +1,16 @@
 // modules 
 const imgPreparing = require('./prj-modules/img-preparing');
 const tfModelWork = require('./prj-modules/tf-model-work');
+const blackList = require('./categories_black-list');
 // CONST 
 const imgSize = 64;
+const blackListCategories = blackList.blackList;
+const numberMaxTopRes = 3 + blackListCategories.length;
 const numberOfTopResults = 3;
 const loadedModel = tfModelWork.tfModelLoad(); // tf Model
 // Vars
 let $predictionTextWindow = $("#predict-main-window"); // Predict text 
+let resultOfPredictions = [];
 
 function main(canvas) {
     let img = imgPreparing.getImage(canvas, imgSize); // Prepared img -> [1, 64, 64, 1]
@@ -33,12 +37,16 @@ function predictionTextSettings(setEllipsis = true, text = '', unsortedPredictio
         let unsortedPredictionArr_ = unsortedPredictionArr.slice(); // unsortedPredictionArr copy 
         let topPredictionArr = bestResults(unsortedPredictionArr);
 
+        resultOfPredictions = []; // Cleaning "resultOfPredictions"
         for (let i = 0; i < numberOfTopResults; i++) {
+            // This function removes "blackList" categories from "topPredictionArr"; It makes "resultOfPredictions"
+            categoryListItem(unsortedPredictionArr_, topPredictionArr.slice(-1 * numberOfTopResults)[i], i, categoriesList, topPredictionArr);
+
             if ((i > 0) && (i != numberOfTopResults - 1))
                 text += ", ";
             else if (i == numberOfTopResults - 1)
                 text += " and ";
-            text += categoryListItem(unsortedPredictionArr_, topPredictionArr[i], categoriesList);
+            text += resultOfPredictions[i];
         }
     }
     $predictionTextWindow.html(text);
@@ -46,7 +54,7 @@ function predictionTextSettings(setEllipsis = true, text = '', unsortedPredictio
 // Function returns top numberOfTopResults predictions; input: array of predictions; output: Last numberOfTopResults elements 
 function bestResults(predictArr) {
     let resultOfSort = qSort(predictArr);
-    return resultOfSort.slice(-numberOfTopResults);
+    return resultOfSort.slice(-numberMaxTopRes);
 }
 // Quick Sort
 function qSort(arr, left = 0, right = arr.length - 1) {
@@ -89,11 +97,18 @@ function qSort(arr, left = 0, right = arr.length - 1) {
 
     return arr;
 }
+
 // Categories-list searching 
-function categoryListItem(unsortedPredictionArr__, topPredictionValue, categoriesList_) {
-    for (let i = 0; i < unsortedPredictionArr__.length; i++)
-        if (unsortedPredictionArr__[i] == topPredictionValue)
-            return categoriesList_[i];
+function categoryListItem(unsortedPredictionArr__, topPredictionValue, currentIndex, categoriesList_, topPredictionArr_) {
+    for (let i = 0; i < unsortedPredictionArr__.length; i++) {
+        if (unsortedPredictionArr__[i] == topPredictionValue) {
+            if (blackListCategories.includes(categoriesList_[i])) {
+                topPredictionArr_.splice(topPredictionArr_.length - 1 * numberOfTopResults + currentIndex, 1);
+                categoryListItem(unsortedPredictionArr__, topPredictionArr_.slice(-1 * numberOfTopResults)[0], currentIndex, categoriesList_, topPredictionArr_);
+            } else
+                resultOfPredictions.push(categoriesList_[i]);
+        }
+    }
 }
 
 module.exports = {
