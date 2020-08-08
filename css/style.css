@@ -163,6 +163,20 @@ html {
 .index-container {
   max-width: 100vw;
 }
+.index-container .preloader {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 9999;
+  overflow: hidden;
+  opacity: 1;
+  background: #444 url("../img/preloader/preloader.svg") center/auto 1.4rem no-repeat;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0;
+}
 .index-container .header {
   width: 100%;
 }

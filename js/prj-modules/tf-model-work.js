@@ -1,10 +1,12 @@
 // modules
 const tf = require('@tensorflow/tfjs');
+const preloader = require('../preloader');
 
 // Model loading; function returns Promise
 async function tfModelLoad() {
     const model = await tf.loadLayersModel('../../model/v3-31.07/converted_weights/content/weights_js/model.json');
     console.log('The Model was loaded!');
+    preloader.preloaderClose();
     return model;
 }
 // Predict; function returns Promise
