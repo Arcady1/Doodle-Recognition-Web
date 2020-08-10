@@ -12,36 +12,40 @@ let $canvas = $('#content__canvas'); // Canvas jQuery
 let canvas = document.getElementById('content__canvas'); // Canvas JS 
 let ctx = $canvas[0].getContext("2d");
 let lineWeights = document.getElementsByClassName("line-weight_hover__item"); // Array of line Weights
-
+let body = document.getElementById("body");
+let ISTOUCHSCREEN = false;
 // Eraser set
 let eraser = false;
 // Weight of pen / eraser line 
 let lineWeightFirst = 25;
 let lineWeightSecond = 45;
 
+// * Is Touchscreen?
+body.addEventListener("touchstart", () => {
+    ISTOUCHSCREEN = true
+});
 // Resizing
 canvasResize();
 $(window).resize(canvasResize);
 // Default settings 
 buttonIsChacnged(false, 0, lineWeightFirst);
 
-// Canvas writing
-$canvas.mousedown(() => {
-    if (eraser == true)
-        ctx.strokeStyle = "#fff";
-    else
-        ctx.strokeStyle = "#000";
+// * CANVAS WRITING TOUCHSCREEN
+canvas.addEventListener("touchstart", () => eraserAndStrokeStyleSet());
+canvas.addEventListener("touchmove", () => writing());
+// Stop scrolling while "touchmove"
+canvas.addEventListener("touchmove", (event) => {
+    event.preventDefault();
+}, false);
+// Processing the canvas image after "touchend"
+canvas.addEventListener("touchend", () => stopWriting());
 
+// * CANVAS WRITING MOUSE
+$canvas.mousedown(() => {
+    eraserAndStrokeStyleSet();
     $canvas.mousemove(() => writing());
-    $canvas.mouseup(() => {
-        stopWriting();
-    });
-    $canvas.mouseleave(() => stopWriting());
 });
-// Processing the canvas image after MouseUp
-$canvastWrapper.mouseup(() => {
-    main.main(canvas);
-});
+$canvas.mouseup(() => stopWriting());
 
 // * PAINT MENU
 // Pen
@@ -66,6 +70,10 @@ lineWeights[1].onmousedown = () => {
 }
 
 // * MY FUNCTIONS
+// Eraser and StrokeStyle settings
+function eraserAndStrokeStyleSet() {
+    eraser ? (ctx.strokeStyle = "#fff") : (ctx.strokeStyle = "#000");
+}
 // Cursor and LineWeight settings
 function buttonIsChacnged(isEraser = false, activeButtonNumberInMenu, newLineWeight) {
     eraser = isEraser;
@@ -76,16 +84,24 @@ function buttonIsChacnged(isEraser = false, activeButtonNumberInMenu, newLineWei
 // Line writing
 function writing() {
     let lineWeight2 = ctx.lineWidth / 2;
-
     ctx.lineCap = "round";
-    ctx.lineTo(event.offsetX + lineWeight2, event.offsetY + lineWeight2);
-    ctx.stroke();
-    ctx.moveTo(event.offsetX + lineWeight2, event.offsetY + lineWeight2);
+
+    if (ISTOUCHSCREEN) {
+        ctx.lineTo(event.targetTouches[0].clientX - lineWeight2, event.targetTouches[0].clientY);
+        ctx.stroke();
+        ctx.moveTo(event.targetTouches[0].clientX - lineWeight2, event.targetTouches[0].clientY);
+    } else {
+        ctx.lineTo(event.offsetX + lineWeight2, event.offsetY + lineWeight2);
+        ctx.stroke();
+        ctx.moveTo(event.offsetX + lineWeight2, event.offsetY + lineWeight2);
+    }
 }
 // Stop writing
 function stopWriting() {
+    console.log("stop");
     ctx.beginPath();
     $canvas.off("mousemove");
+    main.main(canvas);
 }
 
 function canvasResize() {
