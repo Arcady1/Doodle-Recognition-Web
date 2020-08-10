@@ -10,46 +10,50 @@
 
 <body id="body">
     <div class="index-container" id="index-container">
-<div class="preloader" id="preloader"></div>        <div class="header">
-<div class="header__inner">
-    <p class="title">Doodle recognition</p>
-</div>        </div>
-        <div class="index-content index-content_pading">
-            <div class="content__info">
-<div class="info__nav info__nav_padding">
-    <button class="nav__button pen-button" id="pen-button"></button>
-    <button class="nav__button eraser-button" id="eraser-button"></button>
-    <button class="nav__button clear-button" id="clear-button"></button>
-    <button class="nav__button line-width">
-        <div class="line-width__wrapper">
-            <div class="line-width__item"></div>
-            <div class="line-width__item"></div>
-            <div class="line-width__item"></div>
-            <div class="line-width__item"></div>
-            <div class="arrow-AND-line-weight_hover__wrapper" id="arrowANDLineWeightHoverWrapper">
-                <div class="arrow"></div>
-                <div class="line-weight_hover">
-                    <div class="line-weight_hover__wrapper">
-                        <div class="line-weight_hover__item"></div>
-                        <div class="line-weight_hover__item"></div>
-                    </div>
-                </div>
+        <div class="preloader" id="preloader"></div>
+        <div class="header">
+            <div class="header__inner">
+                <p class="title">Doodle recognition</p>
             </div>
         </div>
-    </button>
-</div>            </div>
-<div class="content__drowing" id="content__drowing">
-    <div class="canvas__wrapper wrapper__pointer25" id="canvas__wrapper">
-        <canvas class="content__canvas" id="content__canvas" width="300" height="150"></canvas>
-    </div>
-    <div class="canas-veil"></div>
-    <div class="predict-window__wrapper">
-        <div class="content__predict-window" id="predict-window">
-            <div class="main-window main-window_ellipsis main-window_padding" id="predict-main-window"></div>
-            <div class="tail-window"></div>
-        </div>
-    </div>
-</div>            <canvas id="canv2" width="64" height="64" style="outline: 1px solid #000; display: none;"></canvas>
+        <div class="index-content index-content_pading">
+            <div class="content__info">
+                <div class="info__nav info__nav_padding">
+                    <button class="nav__button pen-button" id="pen-button"></button>
+                    <button class="nav__button eraser-button" id="eraser-button"></button>
+                    <button class="nav__button clear-button" id="clear-button"></button>
+                    <button class="nav__button line-width">
+                        <div class="line-width__wrapper">
+                            <div class="line-width__item"></div>
+                            <div class="line-width__item"></div>
+                            <div class="line-width__item"></div>
+                            <div class="line-width__item"></div>
+                            <div class="arrow-AND-line-weight_hover__wrapper" id="arrowANDLineWeightHoverWrapper">
+                                <div class="arrow"></div>
+                                <div class="line-weight_hover">
+                                    <div class="line-weight_hover__wrapper">
+                                        <div class="line-weight_hover__item"></div>
+                                        <div class="line-weight_hover__item"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            <div class="content__drowing" id="content__drowing">
+                <div class="canvas__wrapper wrapper__pointer25" id="canvas__wrapper">
+                    <canvas class="content__canvas" id="content__canvas" width="300" height="150"></canvas>
+                </div>
+                <div class="canas-veil"></div>
+                <div class="predict-window__wrapper">
+                    <div class="content__predict-window" id="predict-window">
+                        <div class="main-window main-window_ellipsis main-window_padding" id="predict-main-window">
+                        </div>
+                        <div class="tail-window"></div>
+                    </div>
+                </div>
+            </div> <canvas id="canv2" width="64" height="64" style="outline: 1px solid #000; display: none;"></canvas>
         </div>
     </div>
     <!-- Load jQuery -->

@@ -1,3 +1,1 @@
-module.exports = {
-    "blackList": ["animal migration", "camouflage", "megaphone"]
-}
+module.exports={blackList:["animal migration","camouflage","megaphone"]};
