@@ -46,6 +46,7 @@ $canvas.mousedown(() => {
     $canvas.mousemove(() => writing());
 });
 $canvas.mouseup(() => stopWriting());
+$canvas.mouseleave(() => stopWriting());
 
 // * PAINT MENU
 // Pen
@@ -87,9 +88,12 @@ function writing() {
     ctx.lineCap = "round";
 
     if (ISTOUCHSCREEN) {
-        ctx.lineTo(event.targetTouches[0].clientX - lineWeight2, event.targetTouches[0].clientY);
+        let canasOffsetY = canvas.getBoundingClientRect().y;
+        let canasOffsetX = canvas.getBoundingClientRect().x;
+        let k = 1; // Inaccuracy
+        ctx.lineTo(event.targetTouches[0].clientX - lineWeight2 - canasOffsetX + k * 3, event.targetTouches[0].pageY - canasOffsetY + k);
         ctx.stroke();
-        ctx.moveTo(event.targetTouches[0].clientX - lineWeight2, event.targetTouches[0].clientY);
+        ctx.moveTo(event.targetTouches[0].clientX - lineWeight2 - canasOffsetX + k * 3, event.targetTouches[0].pageY - canasOffsetY + k);
     } else {
         ctx.lineTo(event.offsetX + lineWeight2, event.offsetY + lineWeight2);
         ctx.stroke();
@@ -98,7 +102,6 @@ function writing() {
 }
 // Stop writing
 function stopWriting() {
-    console.log("stop");
     ctx.beginPath();
     $canvas.off("mousemove");
     main.main(canvas);
