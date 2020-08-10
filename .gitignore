@@ -6,6 +6,7 @@ source
 js/prj-modules
 js/main.js
 js/style.js
+js/preloader.js
 *.kit
 prepros.config
 package-lock.json
