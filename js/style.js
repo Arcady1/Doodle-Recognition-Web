@@ -22,7 +22,7 @@ let lineWeightSecond = 45;
 
 // * Is Touchscreen?
 body.addEventListener("touchstart", () => {
-    ISTOUCHSCREEN = true
+    ISTOUCHSCREEN = true;
 });
 // Resizing
 canvasResize();
@@ -55,6 +55,15 @@ $penButton.click(() => buttonIsChacnged(false, 0, lineWeightFirst));
 $eraserButton.click(() => buttonIsChacnged(true, 1, lineWeightSecond));
 // Clean
 $clearButton.click(() => {
+    if (ISTOUCHSCREEN) {
+        let timeout = parseFloat($navButtons.css("transition-duration")) * 1000;
+
+        $clearButton.css("background-color", "orange");
+        console.log(timeout);
+        setTimeout(() => {
+            $clearButton.css("background-color", "#fff");
+        }, timeout);
+    }
     main.predictionTextSettings();
     buttonIsChacnged(false, 0, lineWeightFirst);
     smoothCanvasClean();
@@ -75,7 +84,7 @@ lineWeights[1].onmousedown = () => {
 function eraserAndStrokeStyleSet() {
     eraser ? (ctx.strokeStyle = "#fff") : (ctx.strokeStyle = "#000");
 }
-// Cursor and LineWeight settings
+// Cursor and LineWeight settings; activeButtonNumberInMenu: 0 - pen; 1 - eraser; 2 - clear
 function buttonIsChacnged(isEraser = false, activeButtonNumberInMenu, newLineWeight) {
     eraser = isEraser;
     activeButton(activeButtonNumberInMenu);
