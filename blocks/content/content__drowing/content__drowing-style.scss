@@ -1,0 +1,97 @@
+.content__drowing {
+    flex-grow: 1;
+    min-width: $minCanvWidth;
+    max-width: $maxCanvWidth;
+    height: $contentAndCanvasSize;
+    position: relative;
+
+    .canvas__wrapper {
+        width: 100%;
+        height: 100%;
+
+        .content__canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            box-shadow: $canvasShadow;
+        }
+    }
+
+    .wrapper__pointer25 {
+        cursor: url('../img/cursor/circle25.cur'), pointer;
+    }
+
+    .wrapper__pointer45 {
+        cursor: url('../img/cursor/circle45.cur'), pointer;
+    }
+
+    .canas-veil {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+        opacity: 0;
+        z-index: 0;
+        background-color: #fff;
+        transition-property: all;
+        transition-duration: $veilDuration;
+        transition-timing-function: ease;
+        transition-delay: 0;
+    }
+
+    .predict-window__wrapper {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        left: 0;
+        bottom: 0;
+        text-align: center;
+
+        .content__predict-window {
+            display: inline-block;
+            vertical-align: bottom;
+            min-width: $dialogMinWidth;
+            min-height: $dialogHeight;
+            margin: 0 auto;
+            margin-bottom: -($dialogHeight - $textWindowHeight);
+
+            .main-window {
+                width: 100%;
+                min-height: $textWindowHeight;
+                border-radius: $textWindowBorderRadius;
+                background-color: $dialogWindowColor;
+                transition: $ellipsisTransition;
+
+                font-family: 'Sedgwick Ave', cursive;
+                font-size: $dialogWindowFontSize;
+                text-align: center;
+                line-height: $textWindowHeight;
+            }
+
+            .main-window_ellipsis {
+                background-image: url('../img/ellipsis/Ellipsis.gif');
+                background-repeat: no-repeat;
+                background-size: $ellipsisSize $ellipsisSize;
+                background-position: center;
+            }
+
+            .main-window_padding {
+                padding: 0 $dialogWindowPadding;
+            }
+
+            .tail-window {
+                display: block;
+                width: 0;
+                height: 0;
+                border-bottom: $dialogHeight - $textWindowHeight solid transparent;
+                border-left: $dialogHeight - $textWindowHeight solid transparent;
+                border-right: $dialogHeight - $textWindowHeight solid transparent;
+                border-top: $dialogHeight - $textWindowHeight solid $dialogWindowColor;
+                margin: 0 auto;
+            }
+        }
+    }
+}

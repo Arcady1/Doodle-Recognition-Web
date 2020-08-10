@@ -3,16 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Doodle Recognition</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body id="body">
     <div class="index-container" id="index-container">
-        <div class="header">
+<div class="preloader" id="preloader"></div>        <div class="header">
 <div class="header__inner">
-    <p class="title">Doodle app name</p>
+    <p class="title">Doodle recognition</p>
 </div>        </div>
         <div class="index-content index-content_pading">
             <div class="content__info">
@@ -26,10 +26,14 @@
             <div class="line-width__item"></div>
             <div class="line-width__item"></div>
             <div class="line-width__item"></div>
-            <div class="arrow"></div>
-            <div class="line-weight_hover">
-                <div class="line-weight_hover__item"></div>
-                <div class="line-weight_hover__item"></div>
+            <div class="arrow-AND-line-weight_hover__wrapper" id="arrowANDLineWeightHoverWrapper">
+                <div class="arrow"></div>
+                <div class="line-weight_hover">
+                    <div class="line-weight_hover__wrapper">
+                        <div class="line-weight_hover__item"></div>
+                        <div class="line-weight_hover__item"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </button>
