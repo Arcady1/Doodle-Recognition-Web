@@ -111,7 +111,6 @@ function writing() {
 }
 // Stop writing
 function stopWriting(makePredictions = true) {
-    console.log("stop");
     ctx.beginPath();
     $canvas.off("mousemove");
     if (makePredictions)
