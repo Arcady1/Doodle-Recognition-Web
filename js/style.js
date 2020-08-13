@@ -14,6 +14,9 @@ let ctx = $canvas[0].getContext("2d");
 let lineWeights = document.getElementsByClassName("line-weight_hover__item"); // Array of line Weights
 let body = document.getElementById("body");
 let ISTOUCHSCREEN = false;
+// Canvas offset
+let canasOffsetX = canvas.getBoundingClientRect().x;
+let canasOffsetY = canvas.getBoundingClientRect().y;
 // Eraser set
 let eraser = false;
 // Weight of pen / eraser line 
@@ -46,7 +49,7 @@ $canvas.mousedown(() => {
     $canvas.mousemove(() => writing());
 });
 $canvas.mouseup(() => stopWriting());
-$canvas.mouseleave(() => stopWriting());
+$canvas.mouseleave(() => stopWriting(false));
 
 // * PAINT MENU
 // Pen
@@ -59,7 +62,6 @@ $clearButton.click(() => {
         let timeout = parseFloat($navButtons.css("transition-duration")) * 1000;
 
         $clearButton.css("background-color", "orange");
-        console.log(timeout);
         setTimeout(() => {
             $clearButton.css("background-color", "#fff");
         }, timeout);
@@ -97,8 +99,6 @@ function writing() {
     ctx.lineCap = "round";
 
     if (ISTOUCHSCREEN) {
-        let canasOffsetY = canvas.getBoundingClientRect().y;
-        let canasOffsetX = canvas.getBoundingClientRect().x;
         let k = 1; // Inaccuracy
         ctx.lineTo(event.targetTouches[0].clientX - lineWeight2 - canasOffsetX + k * 3, event.targetTouches[0].pageY - canasOffsetY + k);
         ctx.stroke();
@@ -110,10 +110,12 @@ function writing() {
     }
 }
 // Stop writing
-function stopWriting() {
+function stopWriting(makePredictions = true) {
+    console.log("stop");
     ctx.beginPath();
     $canvas.off("mousemove");
-    main.main(canvas);
+    if (makePredictions)
+        main.main(canvas);
 }
 
 function canvasResize() {
