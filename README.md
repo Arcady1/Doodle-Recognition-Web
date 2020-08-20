@@ -25,6 +25,7 @@ $ npm start
 
 npm dependencies:
 ```
+"browserify": "^16.5.2",
 "@tensorflow/tfjs": "^2.0.1",
 "express": "^4.17.1",
 "mathjs": "^7.1.0"
