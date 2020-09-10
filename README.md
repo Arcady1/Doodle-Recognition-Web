@@ -1,4 +1,4 @@
-# [Doodle Recognition][1]
+# [Doodle Recognition][1] 
 
 Web app classsificator based on the [Quick, Draw! Dataset](https://github.com/googlecreativelab/quickdraw-dataset).<br>
 Has Node.js and Keras version of the MobileNetv2 underhood. Generates predicts across 340 categories.
