@@ -4,8 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "build": "browserify js/style.js js/main.js -o js/bundle.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
